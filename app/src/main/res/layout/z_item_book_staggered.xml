@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/z_radius_10_white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/z_img_book_book_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_book_placeholder"
+            app:riv_corner_radius="5dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@id/z_img_book_book_item"
+            android:layout_marginTop="-42dp"
+            android:background="@color/color_semi_black">
+
+            <TextView
+                android:id="@+id/z_txt_price_book_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_marginRight="16dp"
+                android:text="押金：￥23"
+                android:textColor="@color/colorAccent" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/z_layout_title_book_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/z_img_book_book_item"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/z_txt_title_book_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="白夜行"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/z_txt_description_book_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/z_layout_title_book_item"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="送书了送书了" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/z_txt_description_book_item"
+            android:layout_marginTop="8dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/z_img_user_book_item"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/ic_cheese"
+                app:civ_border_color="@color/white_parent"
+                app:civ_border_width="1dp" />
+
+            <TextView
+                android:id="@+id/z_txt_username_book_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/z_img_user_book_item"
+                android:ellipsize="end"
+                android:hint="出借人昵称"
+                android:lines="1" />
+
+            <com.willy.ratingbar.ScaleRatingBar
+                android:id="@+id/z_rating_book_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/z_txt_username_book_item"
+                android:layout_toRightOf="@id/z_img_user_book_item"
+                app:srb_isIndicator="true"
+                app:srb_starHeight="14dp"
+                app:srb_starPadding="1dp"
+                app:srb_starWidth="14dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/z_layout_cover_book_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true" />
+</FrameLayout>

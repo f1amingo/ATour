@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/z_layout_address_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/z_txt_name_address_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="刘看山"
+            android:textColor="@color/text_dark"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/z_txt_phone_address_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="15071399733"
+            android:textColor="@color/text_dark"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/z_txt_address_address_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/z_txt_name_address_item"
+            android:lines="2"
+            android:text="湖北省武汉市武汉大学"
+            android:textColor="@color/text_dark"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <CheckBox
+            android:visibility="gone"
+            android:id="@+id/z_check_address_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="默认地址" />
+
+        <TextView
+            android:id="@+id/z_edit_address_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/z_delete_address_item"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:text="编辑"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/z_delete_address_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:text="删除"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+</LinearLayout>

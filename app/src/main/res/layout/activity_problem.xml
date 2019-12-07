@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/z_toolbar_problem"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:title="问题反馈"
+        app:titleTextColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="问题描述："
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/z_edit_content_problem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="QQ："
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/z_edit_qq_problem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="选填"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="手机号："
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/z_phone_content_problem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="选填"
+            android:inputType="phone"
+            android:maxLength="11" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/z_btn_submit_problem"
+        style="@style/BottomBtnTheme"
+        android:text="提交" />
+
+</LinearLayout>

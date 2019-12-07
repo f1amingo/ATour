@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_discover"
+        android:icon="@drawable/navi_item_discover"
+        android:title="书圈" />
+
+    <item
+        android:id="@+id/navigation_knowledge"
+        android:icon="@drawable/navi_item_knowledge"
+        android:title="知识圈" />
+
+    <item
+        android:id="@+id/navigation_friends"
+        android:icon="@drawable/navi_item_friend"
+        android:title="学友圈" />
+
+    <item
+        android:id="@+id/navigation_mine"
+        android:icon="@drawable/navi_item_mine"
+        android:title="我的" />
+</menu>

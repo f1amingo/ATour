@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/z_btn_dlg_camera"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_camera_gray_24dp"
+        android:drawablePadding="32dp"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="使用相机拍照"
+        android:textSize="16sp" />
+
+    <TextView
+    android:id="@+id/z_btn_dlg_gallery"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:drawableLeft="@drawable/ic_gallery_gray_24dp"
+    android:drawablePadding="32dp"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:text="从相册选择"
+    android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/z_btn_dlg_look"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableLeft="@drawable/ic_eye_gray_24dp"
+        android:drawablePadding="32dp"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="浏览"
+        android:textSize="16sp" />
+</LinearLayout>

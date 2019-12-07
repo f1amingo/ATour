@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    signingConfigs {
+        cheese {
+            keyAlias 'cheese'
+            keyPassword 'cheese'
+            storeFile file('D:/AndroidKey/cheese_key.jks')
+            storePassword 'cheese'
+        }
+    }
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.sanwei.sanwei4a"
+        minSdkVersion 23
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        resConfigs "zh"
+    }
+    buildTypes {
+        release {
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.cheese
+        }
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '26.1.0'
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:cardview-v7:$support_version"
+    implementation "com.android.support:recyclerview-v7:$support_version"
+    implementation "com.android.support:support-v4:$support_version"
+    implementation "com.android.support:design:$support_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.robolectric:robolectric:3.8'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'q.rorbin:badgeview:1.1.3'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'org.jetbrains.anko:anko:0.10.3'
+    implementation 'com.youth.banner:banner:1.4.10'
+    implementation 'com.alibaba:fastjson:1.2.47'
+    implementation 'com.github.ome450901:SimpleRatingBar:1.4.1'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'me.dm7.barcodescanner:zxing:1.9.8'
+    implementation 'com.yanzhenjie:permission:2.0.0-rc4'
+    implementation 'com.github.arcadefire:nice-spinner:1.3.1'
+    implementation 'com.jph.takephoto:takephoto_library:4.0.3'
+    implementation 'top.zibin:Luban:1.1.3'
+    implementation 'com.github.stfalcon:frescoimageviewer:0.5.0'
+    implementation 'com.facebook.fresco:fresco:1.8.1'
+    implementation 'com.tapadoo.android:alerter:2.0.5'
+    implementation 'com.hyman:flowlayout-lib:1.1.2'
+    def room_version = "1.1.0"
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
+    implementation 'com.google.protobuf:protobuf-java:3.5.0'
+    implementation 'io.netty:netty-all:4.1.23.Final'
+    implementation 'com.google.code.gson:gson:2.8.2'
+}

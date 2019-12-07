@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground"
+    android:id="@+id/z_txt_area_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="8dp"
+    android:text="湖北省"
+    android:textColor="@color/text_dark"
+    android:textSize="15sp"
+    android:focusable="true" />

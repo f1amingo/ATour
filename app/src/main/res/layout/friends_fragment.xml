@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/ic_scan_dark"
+            android:textColor="@color/white"
+            android:visibility="invisible" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/z_text_scan_discover"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/z_white_50"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:drawableLeft="@drawable/ic_search_white_24dp"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/icon_gray"
+                    android:gravity="center_vertical"
+                    android:hint="添加好友" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_list_horizontal"
+            android:tint="@color/white"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/z_img_system_notification"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/z_yellow_5"
+            android:contentDescription="消息"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_system_notification" />
+
+        <TextView
+            android:id="@+id/z_txt_system_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/z_img_system_notification"
+            android:layout_toRightOf="@+id/z_img_system_notification"
+            android:text="消息"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:text="2018-2-9 17:50" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/z_txt_system_notification"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/z_img_system_notification"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="借阅通知" />
+
+        <View
+            android:id="@+id/z_cover_system_notification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/z_img_contacts_friends"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/z_green_5"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_contacts" />
+
+        <TextView
+            android:id="@+id/z_txt_contacts_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/z_img_contacts_friends"
+            android:text="学友通讯录"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/z_txt_contacts_friends"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/z_img_contacts_friends"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="一起学习的同学们" />
+
+        <View
+            android:id="@+id/z_cover_contacts_friends"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/z_view_moment"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/z_img_moments_friends"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/z_yellow_5"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_moments" />
+
+        <TextView
+            android:id="@+id/z_txt_moments_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/z_img_moments_friends"
+            android:text="学友圈"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/z_txt_moments_friends"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/z_img_moments_friends"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="大家最近在学什么" />
+
+        <View
+            android:id="@+id/z_cover_moments_friends"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/z_view_book_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/z_img_bar_friends"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/z_blue_5"
+            android:contentDescription="系统消息"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_book_bar" />
+
+        <TextView
+            android:id="@+id/z_txt_bar_friends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/z_img_bar_friends"
+            android:text="学吧"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/z_txt_bar_friends"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/z_img_bar_friends"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="学吧学吧！" />
+
+        <View
+            android:id="@+id/z_cover_study_friends"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginBottom="1dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:text="个人消息"
+        android:textColor="@color/text_dark"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/z_refresh_friend"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/z_recycler_friend"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

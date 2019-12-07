@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_parent">
+
+    <ScrollView
+        android:id="@+id/z_scroll_book_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <com.youth.banner.Banner
+                    android:id="@+id/z_banner_book"
+                    android:layout_width="match_parent"
+                    android:layout_height="356dp"
+                    android:fitsSystemWindows="true"
+                    app:image_scale_type="center_crop" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/color_semi_black">
+
+                    <TextView
+                        android:id="@+id/z_txt_points_book_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="积分：加载中..."
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/z_img_user_book_details"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_cheese"
+                    app:civ_border_color="@color/white_parent"
+                    app:civ_border_width="1dp" />
+
+                <TextView
+                    android:id="@+id/z_txt_username_book_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@id/z_img_user_book_details"
+                    android:text="克里斯多夫" />
+
+                <com.willy.ratingbar.ScaleRatingBar
+                    android:id="@+id/z_rating_book_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/z_txt_username_book_details"
+                    android:layout_toRightOf="@id/z_img_user_book_details"
+                    app:srb_isIndicator="true"
+                    app:srb_rating="4"
+                    app:srb_starHeight="14dp"
+                    app:srb_starPadding="1dp"
+                    app:srb_starWidth="14dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/z_txt_watched_book_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:drawableLeft="@drawable/ic_seen"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="76" />
+
+                    <ImageView
+                        android:id="@+id/z_img_favor_book_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="5dp"
+                        android:src="@drawable/ic_favor_no" />
+
+                    <TextView
+                        android:id="@+id/z_txt_favor_book_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="121" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/z_txt_description_book_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:hint="暂无其他信息"
+                android:lineSpacingExtra="1.2dp"
+                android:lineSpacingMultiplier="1.2"
+                android:text="无论是谈论巴以冲突中人类所面临的道德困境，还是“二战”中对自己国家犹太人的遭遇选择性失明的法国人，抑或他所崇敬的加缪和奥威尔，朱特都带着一种..." />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:background="@drawable/z_shape_bg_white_radius_10"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="内容简介"
+                        android:textColor="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/z_txt_details_book_details"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ellipsize="end"
+                        android:hint="暂无书籍简介"
+                        android:lineSpacingExtra="1.2dp"
+                        android:maxLines="5"
+                        android:text="无论是谈论巴以冲突中人类所面临的道德困境，还是“二战”中对自己国家犹太人的遭遇选择性失明的法国人，抑或他所崇敬的加缪和奥威尔，朱特都带着一种..." />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/z_cover_description_book_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="ISBN：" />
+
+                <TextView
+                    android:id="@+id/z_txt_isbn_book_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="9787532776580" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="页数：" />
+
+                <TextView
+                    android:id="@+id/z_txt_page_book_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="234" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="书籍类型：" />
+
+                <TextView
+                    android:id="@+id/z_txt_type_book_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="小说、悬疑" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="书籍价格：" />
+
+                <TextView
+                    android:id="@+id/z_txt_price_dev_book_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="32.00" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="出版社：" />
+
+                <TextView
+                    android:id="@+id/z_txt_publisher_book_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="中信出版集团·见识城邦" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:text="成色：" />
+
+                <TextView
+                    android:id="@+id/z_txt_condition_book_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="9成新" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/z_btn_borrow_book"
+        style="@style/BottomBtnTheme"
+        android:text="借     书" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/z_toolbar_book_details"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:alpha="0"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@drawable/ic_arrow_back_black"
+        app:subtitle="作者"
+        app:subtitleTextColor="@color/white"
+        app:title="书名"
+        app:titleTextColor="@color/white" />
+
+    <FrameLayout
+        android:id="@+id/z_empty_book_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

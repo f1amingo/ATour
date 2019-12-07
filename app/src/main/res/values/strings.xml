@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">芝士圈</string>
+
+    <string name="login">立即登录</string>
+    <string name="register">快速注册</string>
+    <string name="phone">手机号</string>
+    <string name="password">密码</string>
+    <string name="forgot_your_password">忘记密码？</string>
+    <string name="internet_error">网络错误</string>
+
+</resources>
