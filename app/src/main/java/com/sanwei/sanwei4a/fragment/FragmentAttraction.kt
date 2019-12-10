@@ -9,7 +9,7 @@ import com.sanwei.sanwei4a.R
 class FragmentAttraction : BaseFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.discover_fragment, container, false)!!
+        return inflater?.inflate(R.layout.home_fragment, container, false)!!
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {

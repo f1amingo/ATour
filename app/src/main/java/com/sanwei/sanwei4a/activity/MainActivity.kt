@@ -19,7 +19,7 @@ import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.adapter.CustomPagerAdapter
 import org.jetbrains.anko.find
 
-import com.sanwei.sanwei4a.fragment.FragmentDiscover
+import com.sanwei.sanwei4a.fragment.FragmentHome
 import com.sanwei.sanwei4a.fragment.FragmentFriends
 import com.sanwei.sanwei4a.fragment.FragmentKnowledge
 import com.sanwei.sanwei4a.fragment.FragmentMine
@@ -60,8 +60,8 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         mBottomNavigationView.disableShiftMode()
         mBottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.navigation_discover -> mViewPager.currentItem = 0
-                R.id.navigation_knowledge->mViewPager.currentItem = 1
+                R.id.navigation_home -> mViewPager.currentItem = 0
+                R.id.navigation_discover -> mViewPager.currentItem = 1
                 R.id.navigation_friends -> mViewPager.currentItem = 2
                 R.id.navigation_mine -> mViewPager.currentItem = 3
             }
@@ -73,7 +73,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         mViewPager = findViewById(R.id.viewPager)
         mViewPager.addOnPageChangeListener(this)
         val fragments = ArrayList<Fragment>(4)
-        fragments.add(FragmentDiscover())
+        fragments.add(FragmentHome())
         fragments.add(FragmentKnowledge())
         fragments.add(FragmentFriends())
         fragments.add(FragmentMine())
