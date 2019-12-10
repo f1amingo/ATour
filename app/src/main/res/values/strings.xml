@@ -8,4 +8,9 @@
     <string name="forgot_your_password">忘记密码？</string>
     <string name="internet_error">网络错误</string>
 
+    <string name="home_four_restaurant">餐馆</string>
+    <string name="home_four_flight">航班</string>
+    <string name="home_four_hotel">酒店</string>
+    <string name="home_four_tour">定制游</string>
+
 </resources>

@@ -1,85 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/white_parent">
 
-    <android.support.design.widget.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/z_text_scan_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:drawableTop="@drawable/ic_scan_dark"
+                    android:focusable="true"
+                    android:text="扫一扫"
+                    android:textColor="@color/white" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/z_text_scan_discover"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="36dp"
+                        android:background="@drawable/z_white_50"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:drawableLeft="@drawable/ic_search_white_24dp"
+                            android:drawablePadding="8dp"
+                            android:drawableTint="@color/icon_gray"
+                            android:gravity="center_vertical"
+                            android:hint="搜索书名/作者" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/z_cover_search_discover"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/z_img_list_layout_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_list_horizontal"
+                    android:tint="@color/white" />
+
+            </LinearLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <com.youth.banner.Banner
+            android:id="@+id/z_discover_banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_10"
+            android:background="@drawable/z_shape_bg_white_radius_10"
+            android:elevation="5dp">
 
             <TextView
-                android:id="@+id/z_text_scan_discover"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
-                android:drawableTop="@drawable/ic_scan_dark"
-                android:focusable="true"
-                android:text="扫一扫"
-                android:textColor="@color/white" />
-
-            <RelativeLayout
                 android:layout_width="0dp"
-                android:layout_height="36dp"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/z_text_scan_discover"
-                android:layout_weight="1">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:background="@drawable/z_white_50"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:drawableLeft="@drawable/ic_search_white_24dp"
-                        android:drawablePadding="8dp"
-                        android:drawableTint="@color/icon_gray"
-                        android:gravity="center_vertical"
-                        android:hint="搜索书名/作者" />
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/z_cover_search_discover"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true" />
-            </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/z_img_list_layout_discover"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="16dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
+                android:drawableTop="@drawable/ic_home_tour"
                 android:focusable="true"
-                android:src="@drawable/ic_list_horizontal"
-                android:tint="@color/white" />
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/home_four_tour" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableTop="@drawable/ic_home_hotel"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/home_four_hotel" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableTop="@drawable/ic_home_flight"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/home_four_flight" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:drawableTop="@drawable/ic_home_restaurant"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/home_four_restaurant" />
 
         </LinearLayout>
 
-    </android.support.design.widget.AppBarLayout>
+        <android.support.design.widget.TabLayout
+            android:id="@+id/z_tab_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
 
-    <com.youth.banner.Banner
-        android:id="@+id/z_discover_banner"
-        android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        <com.sanwei.sanwei4a.custom.WrapContentHeightViewPager
+            android:id="@+id/z_pager_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/color_blue_google">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="住哪里" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/color_blue_google">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="怎么吃" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/color_blue_google">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="低价机票" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/color_blue_google"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="旅行商城" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/z_recycler_home_tour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

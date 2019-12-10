@@ -3,7 +3,7 @@
     <item
         android:id="@+id/navigation_discover"
         android:icon="@drawable/navi_item_discover"
-        android:title="书圈" />
+        android:title="发现" />
 
     <item
         android:id="@+id/navigation_knowledge"
@@ -13,7 +13,7 @@
     <item
         android:id="@+id/navigation_friends"
         android:icon="@drawable/navi_item_friend"
-        android:title="学友圈" />
+        android:title="消息" />
 
     <item
         android:id="@+id/navigation_mine"
