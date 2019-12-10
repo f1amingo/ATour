@@ -1,16 +1,20 @@
 package com.sanwei.sanwei4a.custom
 
 import android.content.Context
-import android.support.v4.view.ViewPager
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import kotlin.math.min
 
-class WrapContentHeightViewPager : ViewPager {
+class WrapContentHeightViewPager : PagingViewPager {
+
+    private val TAG = javaClass.simpleName
+
     constructor(context: Context) : super(context) {}
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {}
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        Log.d(TAG, "WrapContentHeightViewPager.onMeasure")
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val view = getChildAt(0)
         view?.measure(widthMeasureSpec, heightMeasureSpec)

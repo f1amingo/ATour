@@ -27,7 +27,7 @@ import com.sanwei.sanwei4a.im.IMClientManager
 import com.sanwei.sanwei4a.im.event.DefaultOnMessageReceivedListener
 import com.sanwei.sanwei4a.util.FileHelper
 
-import com.sanwei.sanwei4a.custom.CustomViewPager
+import com.sanwei.sanwei4a.custom.PagingViewPager
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout
@@ -36,7 +36,7 @@ import per.johnson.server.core.LocalUDPDataSender
 class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 
     private lateinit var mBottomNavigationView: BottomNavigationView
-    private lateinit var mViewPager: CustomViewPager
+    private lateinit var mViewPager: PagingViewPager
     //viewpager与bottomNavigation button联动
     private var mSelectedMenuItem: MenuItem? = null
 
@@ -79,7 +79,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         fragments.add(FragmentMine())
         mViewPager.adapter = CustomPagerAdapter(supportFragmentManager, fragments)
         mViewPager.setPagingEnabled(true)
-        mViewPager.offscreenPageLimit = 2
+//        mViewPager.offscreenPageLimit = 3
     }
 
     override fun onPageScrollStateChanged(state: Int) = Unit

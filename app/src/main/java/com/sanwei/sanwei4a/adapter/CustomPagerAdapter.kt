@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter
 /**
  * Created by Johnson on 2018/3/31.
  */
-class CustomPagerAdapter(fm: FragmentManager, private var fragments: ArrayList<Fragment>) : FragmentPagerAdapter(fm) {
+class CustomPagerAdapter(fm: FragmentManager, private var fragments: List<Fragment>) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): Fragment {
         return fragments[position]
     }
@@ -15,4 +15,6 @@ class CustomPagerAdapter(fm: FragmentManager, private var fragments: ArrayList<F
     override fun getCount(): Int {
         return fragments.size
     }
+
+
 }

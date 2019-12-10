@@ -2,12 +2,16 @@ package com.sanwei.sanwei4a.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.facebook.common.logging.LoggingDelegate
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.adapter.CustomPagerAdapter
 import com.sanwei.sanwei4a.adapter.ItemHomeTour
@@ -19,6 +23,8 @@ import kotlinx.android.synthetic.main.home_fragment.*
 class FragmentHome : BaseFragment() {
 
     private lateinit var mAdapter: ZHomeTourListAdapter
+    private val mTabTextList = listOf("怎么玩", "住哪里", "吃什么", "低价机票")
+    private val mTabFragments = listOf<Fragment>(FragmentAttraction(), FragmentHotel(), FragmentRestaurant(), FragmentFlight())
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.home_fragment, container, false)!!
@@ -28,14 +34,34 @@ class FragmentHome : BaseFragment() {
         initBanner()
         initTab()
         initRecyclerView()
-        initViewPager()
+//        initViewPager()
+        replaceFragment(mTabFragments[0])
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = childFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_home, fragment)
+        transaction.commit()
     }
 
     private fun initTab() {
-        z_tab_home.addTab(z_tab_home.newTab().setText("怎么玩"))
-        z_tab_home.addTab(z_tab_home.newTab().setText("住哪里"))
-        z_tab_home.addTab(z_tab_home.newTab().setText("吃什么"))
-        z_tab_home.addTab(z_tab_home.newTab().setText("低价机票"))
+        mTabTextList.forEach {
+            z_tab_home.addTab(z_tab_home.newTab().setText(it))
+        }
+
+        z_tab_home.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) = Unit
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) = Unit
+
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                Log.d("onTabSelected", tab?.text.toString())
+                Log.d(TAG, mTabTextList.indexOf(tab?.text).toString())
+//                z_pager_home.currentItem = mTabTextList.indexOf(tab?.text)
+                replaceFragment(mTabFragments[mTabTextList.indexOf(tab?.text)])
+            }
+        })
+
     }
 
     private fun initBanner() {
@@ -57,19 +83,12 @@ class FragmentHome : BaseFragment() {
         mAdapter.addData(ItemHomeTour("", "", "", ""))
         mAdapter.addData(ItemHomeTour("", "", "", ""))
         mAdapter.addData(ItemHomeTour("", "", "", ""))
-
     }
 
-    private fun initViewPager() {
-        z_pager_home.adapter = CustomPagerAdapter(activity.supportFragmentManager, arrayListOf(FragmentHotel()))
-//        mViewPager = findViewById(R.id.viewPager)
-//        mViewPager.addOnPageChangeListener(this)
-//        val fragments = ArrayList<Fragment>(4)
-//        fragments.add(FragmentDiscover())
-//
-//        mViewPager.adapter = CustomPagerAdapter(supportFragmentManager, fragments)
-//        mViewPager.setPagingEnabled(true)
-//        mViewPager.offscreenPageLimit = 2
-    }
+//    private fun initViewPager() {
+//        z_pager_home.adapter =
+//                CustomPagerAdapter(childFragmentManager, mTabFragments)
+//        z_pager_home.setPagingEnabled(true)
+//    }
 
 }
