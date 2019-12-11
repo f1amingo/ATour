@@ -47,13 +47,13 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         initViewPager()
         initBottomNavigationView()
 
-        val client = IMClientManager.getIMClientManager()
-        client.init(applicationContext, DefaultOnMessageReceivedListener())
-
-        App.account = FileHelper.fetchAccountInfo()
-        if (App.account != null) {
-            object : LocalUDPDataSender.SendLoginDataAsync(this, App.account!!.accId.toString(), App.account!!.token) {}.execute()
-        }
+//        val client = IMClientManager.getIMClientManager()
+//        client.init(applicationContext, DefaultOnMessageReceivedListener())
+//
+//        App.account = FileHelper.fetchAccountInfo()
+//        if (App.account != null) {
+//            object : LocalUDPDataSender.SendLoginDataAsync(this, App.account!!.accId.toString(), App.account!!.token) {}.execute()
+//        }
     }
 
     private fun initBottomNavigationView() {
@@ -61,9 +61,11 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         mBottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_home -> mViewPager.currentItem = 0
-                R.id.navigation_discover -> mViewPager.currentItem = 1
-                R.id.navigation_friends -> mViewPager.currentItem = 2
-                R.id.navigation_mine -> mViewPager.currentItem = 3
+                R.id.navigation_friends -> mViewPager.currentItem = 1
+                R.id.navigation_mine -> mViewPager.currentItem = 2
+//                R.id.navigation_discover -> mViewPager.currentItem = 1
+//                R.id.navigation_friends -> mViewPager.currentItem = 2
+//                R.id.navigation_mine -> mViewPager.currentItem = 3
             }
             return@setOnNavigationItemSelectedListener true
         }

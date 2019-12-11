@@ -23,8 +23,8 @@ import kotlinx.android.synthetic.main.home_fragment.*
 class FragmentHome : BaseFragment() {
 
     private lateinit var mAdapter: ZHomeTourListAdapter
-    private val mTabTextList = listOf("怎么玩", "住哪里", "吃什么", "低价机票")
-    private val mTabFragments = listOf<Fragment>(FragmentAttraction(), FragmentHotel(), FragmentRestaurant(), FragmentFlight())
+    private val mTabTextList = listOf("吃什么", "住哪里", "低价机票")
+    private val mTabFragments = listOf<Fragment>(FragmentRestaurant(), FragmentHotel(), FragmentFlight())
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.home_fragment, container, false)!!
