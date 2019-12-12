@@ -76,7 +76,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         mViewPager.addOnPageChangeListener(this)
         val fragments = ArrayList<Fragment>(4)
         fragments.add(FragmentHome())
-        fragments.add(FragmentKnowledge())
+//        fragments.add(FragmentKnowledge())
         fragments.add(FragmentFriends())
         fragments.add(FragmentMine())
         mViewPager.adapter = CustomPagerAdapter(supportFragmentManager, fragments)

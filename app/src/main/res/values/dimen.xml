@@ -3,6 +3,8 @@
     <dimen name="home_four_icon_size">24dp</dimen>
     <dimen name="ioc_h_and_w">48dp</dimen>
 
+    <dimen name="home_four_padding">10dp</dimen>
+
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_16">16dp</dimen>
     <dimen name="dp_32">32dp</dimen>

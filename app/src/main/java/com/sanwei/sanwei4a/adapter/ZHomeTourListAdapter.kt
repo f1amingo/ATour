@@ -11,9 +11,9 @@ class ZHomeTourListAdapter(val mResId: Int, val mItems: ArrayList<ItemHomeTour>)
         item!!
         helper!!
 //        helper.setText(R.id.z_img_tour_item, item.img)
-        helper.setText(R.id.z_txt_tour_item_title, item.title)
-        helper.setText(R.id.z_txt_tour_item_merchant, item.merchant)
-        helper.setText(R.id.z_txt_tour_item_sale, item.sale)
+//        helper.setText(R.id.z_txt_tour_item_title, item.title)
+//        helper.setText(R.id.z_txt_tour_item_merchant, item.merchant)
+//        helper.setText(R.id.z_txt_tour_item_sale, item.sale)
     }
 }
 

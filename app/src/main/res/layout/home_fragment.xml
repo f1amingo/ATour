@@ -88,9 +88,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="-20dp"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
             android:background="@drawable/z_shape_bg_white_radius_10"
-            android:elevation="5dp">
+            android:elevation="5dp"
+            android:gravity="center_vertical">
 
             <TextView
                 android:layout_width="0dp"
@@ -101,8 +105,8 @@
                 android:drawableTop="@drawable/ic_home_tour"
                 android:focusable="true"
                 android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingTop="@dimen/home_four_padding"
+                android:paddingBottom="@dimen/home_four_padding"
                 android:text="@string/home_four_tour" />
 
             <TextView
@@ -114,8 +118,8 @@
                 android:drawableTop="@drawable/ic_home_hotel"
                 android:focusable="true"
                 android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingTop="@dimen/home_four_padding"
+                android:paddingBottom="@dimen/home_four_padding"
                 android:text="@string/home_four_hotel" />
 
             <TextView
@@ -127,8 +131,8 @@
                 android:drawableTop="@drawable/ic_home_flight"
                 android:focusable="true"
                 android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingTop="@dimen/home_four_padding"
+                android:paddingBottom="@dimen/home_four_padding"
                 android:text="@string/home_four_flight" />
 
             <TextView
@@ -140,8 +144,8 @@
                 android:drawableTop="@drawable/ic_home_restaurant"
                 android:focusable="true"
                 android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:paddingTop="@dimen/home_four_padding"
+                android:paddingBottom="@dimen/home_four_padding"
                 android:text="@string/home_four_restaurant" />
 
         </LinearLayout>
@@ -160,14 +164,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@color/white"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="旅行商城" />
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:text="旅行商城"
+                android:textColor="@color/text_dark"
+                android:textStyle="bold" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/z_recycler_home_tour"
@@ -175,6 +183,10 @@
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
     </LinearLayout>
 
