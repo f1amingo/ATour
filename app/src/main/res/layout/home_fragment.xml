@@ -16,26 +16,28 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
                 <TextView
-                    android:id="@+id/z_text_scan_discover"
+                    android:id="@+id/z_txt_home_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="8dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
-                    android:drawableTop="@drawable/ic_scan_dark"
+                    android:drawableEnd="@drawable/ic_home_location"
                     android:focusable="true"
-                    android:text="扫一扫"
-                    android:textColor="@color/white" />
+                    android:gravity="center_vertical"
+                    android:text="上海"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <RelativeLayout
                     android:layout_width="0dp"
                     android:layout_height="36dp"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/z_text_scan_discover"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_8"
                     android:layout_weight="1">
 
                     <LinearLayout
@@ -52,7 +54,7 @@
                             android:drawablePadding="8dp"
                             android:drawableTint="@color/icon_gray"
                             android:gravity="center_vertical"
-                            android:hint="搜索书名/作者" />
+                            android:hint="搜索当地美食/酒店" />
                     </LinearLayout>
 
                     <View
@@ -64,17 +66,16 @@
                         android:focusable="true" />
                 </RelativeLayout>
 
-                <ImageView
-                    android:id="@+id/z_img_list_layout_discover"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="16dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
+                    android:drawableStart="@drawable/ic_home_weather"
                     android:focusable="true"
-                    android:src="@drawable/ic_list_horizontal"
-                    android:tint="@color/white" />
+                    android:gravity="center_vertical"
+                    android:text="10℃"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

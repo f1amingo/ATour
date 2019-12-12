@@ -25,8 +25,7 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="36dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/z_text_scan_discover"
+
             android:layout_weight="1">
 
             <LinearLayout
