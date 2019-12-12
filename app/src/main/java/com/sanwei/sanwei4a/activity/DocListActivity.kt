@@ -27,7 +27,7 @@ class DocListActivity : AppCompatActivity() {
             mAdapter.addData(DocItem())
         mAdapter.setOnItemClickListener { _, _, position ->
             val item = mAdapter.getItem(position)
-            startActivity<DocDetailsActivity>()
+            //startActivity<DocDetailsActivity>()
         }
     }
 }

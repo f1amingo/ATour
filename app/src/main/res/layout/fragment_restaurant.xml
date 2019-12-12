@@ -26,7 +26,8 @@
                     android:layout_height="80dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/test"
-                    app:riv_corner_radius="5dp" />
+                    app:riv_corner_radius="5dp"
+                    android:id="@+id/frontImageView"/>
 
                 <TextView
                     android:layout_width="match_parent"

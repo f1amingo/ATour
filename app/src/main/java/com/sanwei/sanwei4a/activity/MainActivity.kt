@@ -31,6 +31,8 @@ import com.sanwei.sanwei4a.custom.PagingViewPager
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout
+import kotlinx.android.synthetic.main.fragment_restaurant.*
+import org.jetbrains.anko.startActivity
 import per.johnson.server.core.LocalUDPDataSender
 
 class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
@@ -54,6 +56,9 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 //        if (App.account != null) {
 //            object : LocalUDPDataSender.SendLoginDataAsync(this, App.account!!.accId.toString(), App.account!!.token) {}.execute()
 //        }
+
+
+
     }
 
     private fun initBottomNavigationView() {
