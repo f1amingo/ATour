@@ -5,10 +5,10 @@ import android.os.Bundle
 import com.sanwei.sanwei4a.R
 
 class HotelDetailsActivity : AppCompatActivity() {
-        override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
 
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_restaurant_details)
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_restaurant_details)
 
-        }
+    }
 }

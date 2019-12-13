@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:background="@drawable/restaurant"
+        android:background="@drawable/tourdemo"
         android:orientation="vertical">
 
         <LinearLayout
@@ -18,70 +18,6 @@
             android:layout_marginTop="@dimen/dp_16"
             android:paddingLeft="@dimen/dp_16"
             android:paddingRight="@dimen/dp_16">
-
-            <!--            <RelativeLayout-->
-            <!--                android:layout_width="0dp"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                android:layout_weight="1"-->
-            <!--                android:orientation="vertical">-->
-            <!--            </RelativeLayout>-->
-            <!--                <TextView-->
-            <!--                    style="@style/DocDetailsItemTitle"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:lines="2"-->
-            <!--                    android:text="这个位置是资料标题，字数这么多应该够的吧" />-->
-
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_alignParentBottom="true">-->
-
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginRight="16dp"-->
-            <!--                        android:background="@drawable/z_shape_doc_tag"-->
-            <!--                        android:paddingBottom="4dp"-->
-            <!--                        android:paddingLeft="8dp"-->
-            <!--                        android:paddingRight="8dp"-->
-            <!--                        android:paddingTop="4dp"-->
-            <!--                        android:text="标签一" />-->
-
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginRight="16dp"-->
-            <!--                        android:background="@drawable/z_shape_doc_tag"-->
-            <!--                        android:paddingBottom="4dp"-->
-            <!--                        android:paddingLeft="8dp"-->
-            <!--                        android:paddingRight="8dp"-->
-            <!--                        android:paddingTop="4dp"-->
-            <!--                        android:text="标签二" />-->
-
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:background="@drawable/z_shape_doc_tag"-->
-            <!--                        android:paddingBottom="4dp"-->
-            <!--                        android:paddingLeft="8dp"-->
-            <!--                        android:paddingRight="8dp"-->
-            <!--                        android:paddingTop="4dp"-->
-            <!--                        android:text="标签三" />-->
-
-            <!--                </LinearLayout>-->
-
-
-
-            <!--            <com.makeramen.roundedimageview.RoundedImageView-->
-            <!--                android:layout_width="80dp"-->
-            <!--                android:layout_height="80dp"-->
-            <!--                android:layout_marginLeft="@dimen/dp_16"-->
-            <!--                android:background="@drawable/z_radius_10_white"-->
-            <!--                android:src="@drawable/ic_book_placeholder"-->
-            <!--                app:riv_border_color="@color/white_parent"-->
-            <!--                app:riv_border_width="1dp"-->
-            <!--                app:riv_corner_radius="5dp" />-->
 
         </LinearLayout>
 
@@ -98,76 +34,56 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:padding="@dimen/dp_16">
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                >
             <TextView
                 style="@style/DocDetailsItemTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="东湖面馆">
+                android:text="川西稻城亚丁环线7日线路">
             </TextView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/z_shape_person_tag"
+                    android:text="爬山" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/z_shape_person_tag"
+                    android:text="徒步" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/z_shape_person_tag"
+                    android:text="风光" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_cheese"
-                    app:civ_border_color="@color/white"
-                    app:civ_border_width="1dp" />
+
 
                 <TextView
+                    style="@style/DocDetailsItemTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginLeft="150dp"
                     android:layout_marginRight="@dimen/dp_16"
-                    android:text="上海交通大学闵行校区第五餐厅" />
-                <ImageView
-                    android:id="@+id/z_img_chat_docDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_chat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/z_img_chat_docDetails"
-                    android:text="私信" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-
-                android:gravity="center_vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="160dp"
-                    android:background="@drawable/z_shape_person_tag"
-                    android:text="生煎" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
-                    android:background="@drawable/z_shape_person_tag"
-                    android:text="汤包" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="26dp"
-                    android:background="@drawable/z_shape_person_tag"
-                    android:text="面条" />
-
-
-
-
+                    android:text="线路价格：6000元" />
 
             </LinearLayout>
+
 
             <!--            <TextView-->
             <!--                android:layout_width="match_parent"-->
@@ -186,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="推荐菜品"
+                android:text="景点风光"
                 android:textColor="@color/text_dark"
                 android:textStyle="bold" />
             <LinearLayout
@@ -196,55 +112,57 @@
                 <FrameLayout
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/restaurant">
+                    android:background="@drawable/tourdemo">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:text="生煎"
+                        android:text="山"
                         android:textColor="@color/cardview_dark_background"/>
                 </FrameLayout>
                 <FrameLayout
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/food2">
+                    android:background="@drawable/spotdemo">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:text="香菇面筋面"
+                        android:text="水"
                         android:textColor="@color/cardview_dark_background"/>
                 </FrameLayout>
                 <FrameLayout
                     android:layout_width="120dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/food3">
+                    android:background="@drawable/tourdemo">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:text="汤包"
+                        android:text="山水"
                         android:textColor="@color/cardview_dark_background"/>
                 </FrameLayout>
             </LinearLayout>
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="本资料包括阿萨德科技阿拉斯加的拉克丝，从什么什么等方面加速减肥理解奥斯卡发" />-->
 
-            <!--            <TextView-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginTop="8dp"-->
-            <!--                android:text="适用范围"-->
-            <!--                android:textColor="@color/text_dark"-->
-            <!--                android:textStyle="bold" />-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/icon_gray" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="行程概况"
+                android:textColor="@color/text_dark"
+                android:textStyle="bold" />
 
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="本资料包括阿萨德科技阿拉斯加的拉克丝，从什么什么等方面加速减肥理解奥斯卡发" />-->
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/mapdemo" />
 
             <View
                 android:layout_width="match_parent"
@@ -254,11 +172,12 @@
                 android:background="@color/icon_gray" />
 
             <TextView
-                style="@style/DocDetailsItemTitle"
+                android:textStyle="bold"
+                android:textColor="@color/text_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="用户点评" />
+                android:text="行程介绍" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -273,31 +192,21 @@
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_marginRight="8dp"
-                        android:src="@drawable/ic_cheese" />
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="用户名" />
+                        android:text="Day 1 远眺四姑娘山"
+                        android:textColor="@color/text_dark"
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="我喜欢吃老干妈啊"
+                    android:text="测试测试测试测试"
                     android:textSize="12sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="2018-8-8 14:38:14"
-                    android:textSize="10sp" />
 
             </LinearLayout>
 
@@ -316,6 +225,97 @@
                     android:layout_height="wrap_content"
                     android:gravity="center">
 
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Day 2 双桥沟"
+                        android:textColor="@color/text_dark"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="测试测试此测试时"
+                    android:textSize="12sp" />
+
+
+            </LinearLayout>
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/text_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="商家信息" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/z_white_10"
+                android:orientation="vertical"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="8dp"
+                        android:src="@drawable/ic_cheese" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MG旅行社" />
+                    <ImageView
+                        android:id="@+id/z_img_chat_docDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
+                        android:src="@drawable/ic_chat" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/z_img_chat_docDetails"
+                        android:text="私信" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="平台认证商家"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="用户评价"
+                android:textColor="@color/text_dark"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/z_white_10"
+                android:orientation="vertical"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -332,16 +332,36 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="炸酱面太少了吧"
+                    android:text="好玩好玩好玩"
                     android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="2018-8-8 14:38:14"
-                    android:textSize="10sp" />
-
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="套餐类型"
+                android:textColor="@color/text_dark"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="12月6日"/>.
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="12月7日"/>.
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="12月8日"/>.
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="12月9日"/>.
             </LinearLayout>
 
         </LinearLayout>
@@ -358,7 +378,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="使用体验" />
+            android:backgroundTint="@color/color_main"
+            android:text="确定行程" />
 
         <!--        <Button-->
         <!--            android:layout_width="wrap_content"-->
