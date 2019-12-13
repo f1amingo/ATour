@@ -26,6 +26,7 @@
                     android:layout_height="80dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/test"
+                    android:id="@+id/frontHotelView"
                     app:riv_corner_radius="5dp" />
 
                 <TextView

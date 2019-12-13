@@ -18,7 +18,7 @@ class FragmentRestaurant : BaseFragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         Log.d(TAG, "onViewCreated")
 
-        frontImageView.setOnClickListener {
+        frontRestView.setOnClickListener {
             startActivity<RestDetailsActivity>()
         }
 
