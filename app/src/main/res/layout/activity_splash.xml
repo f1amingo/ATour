@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activity.SplashActivity">
 
     <ImageView
+        android:id="@+id/z_img_logo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="16dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/splash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:src="@mipmap/icon" />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:src="@mipmap/logo" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-40dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:src="@mipmap/slogan" />
+
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/name_list" />
+
+</RelativeLayout>
