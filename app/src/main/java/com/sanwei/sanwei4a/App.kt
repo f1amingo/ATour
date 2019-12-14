@@ -11,9 +11,14 @@ import android.support.v4.app.NotificationCompat
 import android.util.Log
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.netease.nimlib.sdk.*
+import com.netease.nimlib.sdk.auth.AuthService
 import com.netease.nimlib.sdk.auth.AuthServiceObserver
 import com.netease.nimlib.sdk.auth.LoginInfo
+import com.netease.nimlib.sdk.msg.MessageBuilder
+import com.netease.nimlib.sdk.msg.MsgService
+import com.netease.nimlib.sdk.msg.MsgServiceObserve
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum
+import com.netease.nimlib.sdk.msg.model.IMMessage
 import com.netease.nimlib.sdk.uinfo.UserInfoProvider
 import com.netease.nimlib.sdk.uinfo.model.UserInfo
 import com.netease.nimlib.sdk.util.NIMUtil
@@ -70,7 +75,36 @@ class App : Application() {
             // 1、UI相关初始化操作
             // 2、相关Service调用
             NIMClient.getService(AuthServiceObserver::class.java).observeOnlineStatus(
-                    { status -> Log.d("App", status.name) }, true)
+                    { status ->
+                        Log.d("App", status.name)
+                        if (status.name == "UNLOGIN") {
+                            NIMClient.getService(AuthService::class.java).login(loginInfo())
+                                    .setCallback(object : RequestCallback<LoginInfo> {
+                                        override fun onSuccess(param: LoginInfo?) {
+                                            Log.e("APP", "登录成功")
+                                        }
+
+                                        override fun onFailed(code: Int) {
+                                            Log.e("APP", "登录失败")
+                                        }
+
+                                        override fun onException(exception: Throwable?) {
+                                            Log.e("APP", "登录异常")
+                                        }
+                                    })
+                        }
+                    }, true)
+
+            NIMClient.getService(MsgServiceObserve::class.java)
+                    .observeReceiveMessage({
+                        Log.e("observeReceiveMessage", it.toString())
+                        it.forEach {
+                            Log.e("observeReceiveMessage", it.content)
+                        }
+                    }, true)
+
+//            val textMessage = MessageBuilder.createTextMessage("test2", SessionTypeEnum.P2P, "this is an example")
+//            NIMClient.getService(MsgService::class.java).sendMessage(textMessage, false)
         }
     }
 
@@ -105,7 +139,7 @@ class App : Application() {
     }
 
     private fun loginInfo(): LoginInfo? {
-        return LoginInfo("test1", "975320bfc31f73d3ad9067daeeff9712")
+        return LoginInfo("test2", "a6156a446a50c1f5d014ca3d910092e8")
     }
 
     companion object {
