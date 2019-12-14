@@ -20,20 +20,13 @@ import com.sanwei.sanwei4a.adapter.CustomPagerAdapter
 import org.jetbrains.anko.find
 
 import com.sanwei.sanwei4a.fragment.FragmentHome
-import com.sanwei.sanwei4a.fragment.FragmentFriends
-import com.sanwei.sanwei4a.fragment.FragmentKnowledge
+import com.sanwei.sanwei4a.fragment.FragmentInfo
 import com.sanwei.sanwei4a.fragment.FragmentMine
-import com.sanwei.sanwei4a.im.IMClientManager
-import com.sanwei.sanwei4a.im.event.DefaultOnMessageReceivedListener
-import com.sanwei.sanwei4a.util.FileHelper
 
 import com.sanwei.sanwei4a.custom.PagingViewPager
 import com.zhy.view.flowlayout.FlowLayout
 import com.zhy.view.flowlayout.TagAdapter
 import com.zhy.view.flowlayout.TagFlowLayout
-import kotlinx.android.synthetic.main.fragment_restaurant.*
-import org.jetbrains.anko.startActivity
-import per.johnson.server.core.LocalUDPDataSender
 
 class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
 
@@ -48,17 +41,6 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         mBottomNavigationView = find(R.id.bottom_navigation_view)
         initViewPager()
         initBottomNavigationView()
-
-//        val client = IMClientManager.getIMClientManager()
-//        client.init(applicationContext, DefaultOnMessageReceivedListener())
-//
-//        App.account = FileHelper.fetchAccountInfo()
-//        if (App.account != null) {
-//            object : LocalUDPDataSender.SendLoginDataAsync(this, App.account!!.accId.toString(), App.account!!.token) {}.execute()
-//        }
-
-
-
     }
 
     private fun initBottomNavigationView() {
@@ -82,7 +64,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         val fragments = ArrayList<Fragment>(4)
         fragments.add(FragmentHome())
 //        fragments.add(FragmentKnowledge())
-        fragments.add(FragmentFriends())
+        fragments.add(FragmentInfo())
         fragments.add(FragmentMine())
         mViewPager.adapter = CustomPagerAdapter(supportFragmentManager, fragments)
         mViewPager.setPagingEnabled(true)

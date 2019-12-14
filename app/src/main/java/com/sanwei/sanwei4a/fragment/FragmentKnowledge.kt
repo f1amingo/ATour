@@ -14,7 +14,7 @@ import com.sanwei.sanwei4a.activity.DocListActivity
 import com.sanwei.sanwei4a.activity.SystemNotificationActivity
 import com.sanwei.sanwei4a.adapter.ItemNotification
 import com.sanwei.sanwei4a.adapter.NotificationListAdapter
-import kotlinx.android.synthetic.main.friends_fragment.*
+import kotlinx.android.synthetic.main.fragment_info.*
 import kotlinx.android.synthetic.main.knowledge_fragment.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.find

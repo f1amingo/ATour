@@ -13,53 +13,27 @@ import com.sanwei.sanwei4a.activity.ChatActivity
 import com.sanwei.sanwei4a.activity.SystemNotificationActivity
 import com.sanwei.sanwei4a.adapter.ItemNotification
 import com.sanwei.sanwei4a.adapter.NotificationListAdapter
-import kotlinx.android.synthetic.main.friends_fragment.*
+import kotlinx.android.synthetic.main.fragment_info.*
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.find
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.uiThread
 
-
 /**
- * Created by Johnson on 2018/3/31.
- *
+ * Created by Flamingo on 2019/12/14.
  */
-class FragmentFriends : BaseFragment() {
+class FragmentInfo : BaseFragment() {
 
-    private lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
-    private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: NotificationListAdapter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater?.inflate(R.layout.friends_fragment, container, false)!!
-        mSwipeRefreshLayout = view.find(R.id.z_refresh_friend)
-        mRecyclerView = view.find(R.id.z_recycler_friend)
-        return view
+        return inflater?.inflate(R.layout.fragment_info, container, false)!!
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         initRecyclerView()
         initSwipeRefreshLayout()
-        initSystemNotifications()
-        initBarMomentsListener()
-        for (i in 0..10) {
+        for (i in 0..5) {
             mAdapter.addData(ItemNotification())
-        }
-        initNoFunction()
-    }
-
-    private fun initNoFunction() {
-        z_cover_contacts_friends.setOnClickListener { toast("敬请期待") }
-        z_cover_moments_friends.setOnClickListener {toast("敬请期待") }
-        z_cover_study_friends.setOnClickListener {toast("敬请期待") }
-    }
-
-    private fun initBarMomentsListener() {
-        z_view_book_bar.setOnClickListener {
-            toast("敬请期待")
-        }
-        z_view_moment.setOnClickListener {
-            toast("敬请期待")
         }
     }
 
@@ -73,11 +47,11 @@ class FragmentFriends : BaseFragment() {
     }
 
     private fun initSwipeRefreshLayout() {
-        mSwipeRefreshLayout.setOnRefreshListener {
+        z_refresh_info.setOnRefreshListener {
             doAsync {
                 Thread.sleep(500)
                 uiThread {
-                    mSwipeRefreshLayout.isRefreshing = false
+                    z_refresh_info.isRefreshing = false
                 }
             }
         }
@@ -85,8 +59,8 @@ class FragmentFriends : BaseFragment() {
 
     private fun initRecyclerView() {
         mAdapter = NotificationListAdapter(R.layout.z_item_notification, ArrayList())
-        mRecyclerView.layoutManager = LinearLayoutManager(context)
-        mRecyclerView.adapter = mAdapter
+        z_recycler_info.layoutManager = LinearLayoutManager(context)
+        z_recycler_info.adapter = mAdapter
 
         mAdapter.setOnItemClickListener { _, _, position ->
             val item = mAdapter.getItem(position)!!
