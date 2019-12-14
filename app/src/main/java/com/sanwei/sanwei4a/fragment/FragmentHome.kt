@@ -13,11 +13,14 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.facebook.common.logging.LoggingDelegate
 import com.sanwei.sanwei4a.R
+import com.sanwei.sanwei4a.activity.TourDetailsActivity
 import com.sanwei.sanwei4a.adapter.CustomPagerAdapter
 import com.sanwei.sanwei4a.adapter.ItemHomeTour
 import com.sanwei.sanwei4a.adapter.ZHomeTourListAdapter
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.home_fragment.*
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.startActivity
 
 
 class FragmentHome : BaseFragment() {
@@ -83,6 +86,10 @@ class FragmentHome : BaseFragment() {
         mAdapter.addData(ItemHomeTour("", "", "", ""))
         mAdapter.addData(ItemHomeTour("", "", "", ""))
         mAdapter.addData(ItemHomeTour("", "", "", ""))
+        mAdapter.setOnItemClickListener { _, _, position ->
+            val item = mAdapter.getItem(position)
+            startActivity<TourDetailsActivity>()
+        }
     }
 
 //    private fun initViewPager() {

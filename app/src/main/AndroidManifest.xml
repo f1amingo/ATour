@@ -59,7 +59,10 @@
         <activity android:name=".activity.FindPswActivity" />
         <activity android:name=".activity.newfind.FindActivity" />
         <activity android:name=".activity.DocListActivity" />
-        <activity android:name=".activity.RestDetailsActivity" />
+        <activity android:name=".activity.RestDetailsActivity"/>
+        <activity android:name=".activity.HotelDetailsActivity"/>
+        <activity android:name=".activity.TourDetailsActivity"/>
+        <activity android:name=".activity.FlightDetailsActivity"/>
     </application>
 
 </manifest>

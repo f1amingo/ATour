@@ -27,7 +27,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/test"
                     app:riv_corner_radius="5dp"
-                    android:id="@+id/frontImageView"/>
+                    android:id="@+id/frontRestView"/>
 
                 <TextView
                     android:layout_width="match_parent"
