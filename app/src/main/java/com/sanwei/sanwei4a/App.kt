@@ -27,6 +27,7 @@ import com.sanwei.sanwei4a.entity.po.Account
 import com.sanwei.sanwei4a.util.LogUtil
 import com.sanwei.sanwei4a.util.RequestUtil
 import org.jetbrains.anko.defaultSharedPreferences
+import org.jetbrains.anko.toast
 
 
 class App : Application() {
@@ -81,30 +82,22 @@ class App : Application() {
                             NIMClient.getService(AuthService::class.java).login(loginInfo())
                                     .setCallback(object : RequestCallback<LoginInfo> {
                                         override fun onSuccess(param: LoginInfo?) {
-                                            Log.e("APP", "登录成功")
+                                            Log.e("APP", "IM登录成功")
                                         }
 
                                         override fun onFailed(code: Int) {
-                                            Log.e("APP", "登录失败")
+                                            Log.e("APP", "IM登录失败")
                                         }
 
                                         override fun onException(exception: Throwable?) {
-                                            Log.e("APP", "登录异常")
+                                            Log.e("APP", "IM登录异常")
                                         }
                                     })
                         }
                     }, true)
 
-            NIMClient.getService(MsgServiceObserve::class.java)
-                    .observeReceiveMessage({
-                        Log.e("observeReceiveMessage", it.toString())
-                        it.forEach {
-                            Log.e("observeReceiveMessage", it.content)
-                        }
-                    }, true)
 
-//            val textMessage = MessageBuilder.createTextMessage("test2", SessionTypeEnum.P2P, "this is an example")
-//            NIMClient.getService(MsgService::class.java).sendMessage(textMessage, false)
+
         }
     }
 

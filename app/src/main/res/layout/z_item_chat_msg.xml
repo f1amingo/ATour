@@ -24,7 +24,7 @@
         android:background="@drawable/z_chat_left_bg">
 
         <TextView
-            android:layout_marginLeft="16dp"
+            android:layout_marginLeft="8dp"
             android:id="@+id/z_txt_chat_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         android:background="@drawable/z_chat_right_bg">
 
         <TextView
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="8dp"
             android:id="@+id/z_txt_chat_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

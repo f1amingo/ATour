@@ -1,17 +1,23 @@
 package com.sanwei.sanwei4a.activity
 
-import android.content.res.ColorStateList
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.text.Editable
 import android.text.TextWatcher
-import android.text.style.BackgroundColorSpan
+import android.util.Log
 import android.view.View
-import android.widget.EditText
+import com.alibaba.fastjson.JSONObject
+import com.netease.nimlib.sdk.NIMClient
+import com.netease.nimlib.sdk.RequestCallback
+import com.netease.nimlib.sdk.RequestCallbackWrapper
+import com.netease.nimlib.sdk.msg.MessageBuilder
+import com.netease.nimlib.sdk.msg.MsgService
+import com.netease.nimlib.sdk.msg.constant.MsgDirectionEnum
+import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum
+import com.netease.nimlib.sdk.msg.model.IMMessage
+import com.netease.nimlib.sdk.msg.model.QueryDirectionEnum
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.adapter.ChatListAdapter
 import com.sanwei.sanwei4a.adapter.ItemChatMsg
@@ -25,10 +31,13 @@ class ChatActivity : BaseActivity() {
     private lateinit var mBtnSend: View
     private lateinit var mAdapter: ChatListAdapter
     private var mInput: String = ""
+    private var accId: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
+
+        accId = intent.getStringExtra("accId")
 
         mToolbar = find(R.id.z_toolbar_chat)
         mRecyclerView = find(R.id.z_recycler_chat)
@@ -51,37 +60,57 @@ class ChatActivity : BaseActivity() {
 
             override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 mInput = text.toString()
-                if (mInput.isBlank()) {
-                    mBtnSend.isEnabled = false
-                } else {
-                    mBtnSend.isEnabled = true
-                }
+                mBtnSend.isEnabled = !mInput.isBlank()
+                Log.e(TAG, "onTextChanged $mInput")
             }
         })
     }
 
     private fun fetchChatRecord() {
-        for (i in 1..5) {
-            mAdapter.addData(ItemChatMsg("测试消息$i",
-                    System.currentTimeMillis(),
-                    ItemChatMsg.TYPE_RECEIVED))
-        }
+        val anchor = MessageBuilder.createEmptyMessage("test1", SessionTypeEnum.P2P, 0)
+        NIMClient.getService(MsgService::class.java).queryMessageListEx(anchor, QueryDirectionEnum.QUERY_NEW,
+                20, true).setCallback(object : RequestCallbackWrapper<List<IMMessage>>() {
+            override fun onResult(code: Int, result: List<IMMessage>?, exception: Throwable?) {
+                Log.e(TAG, "获取聊天记录成功")
+                result!!.forEach {
+                    Log.e(TAG, JSONObject.toJSONString(it))
+                    mAdapter.addData(ItemChatMsg(it.content, it.time, it.direct))
+                    mRecyclerView.smoothScrollToPosition(mAdapter.itemCount - 1)
+                }
+            }
+        })
+
+
     }
 
     private fun initBtnSend() {
         mBtnSend.setOnClickListener {
-            //            val input = mEdit.text.toString()
-//            if (input == "") return@setOnClickListener
-//            mEdit.setText("")
-//            //添加新消息
-//            val newItem = ItemChatMsg(input, System.currentTimeMillis(), ItemChatMsg.TYPE_SENT)
-//            mAdapter.addData(newItem)
-//            //向下滚动
-//            mRecyclerView.smoothScrollToPosition(mAdapter.itemCount - 1)
-            //发送
-//            val contentBody = ContentBody(STRING_TYPE, input.toByteArray(Charset.forName(DEFAULT_ENCODING)))
-//            val content = MessagePackager.mpackage(contentBody)
-//            sendMsg(content, mThisAccountId)
+            if (mInput == "") return@setOnClickListener
+            // 发送
+            val textMessage = MessageBuilder.createTextMessage(accId, SessionTypeEnum.P2P, mInput)
+            NIMClient.getService(MsgService::class.java)
+                    .sendMessage(textMessage, false)
+                    .setCallback(object : RequestCallback<Void> {
+                        override fun onSuccess(param: Void?) {
+                            Log.e(TAG, "消息发送成功")
+                            //更新UI
+                            val newItem = ItemChatMsg(textMessage.content, System.currentTimeMillis(), MsgDirectionEnum.Out)
+                            mAdapter.addData(newItem)
+                            //向下滚动
+                            mRecyclerView.smoothScrollToPosition(mAdapter.itemCount - 1)
+                            z_input_chat.setText("")
+                        }
+
+                        override fun onFailed(code: Int) {
+                            Log.e(TAG, "消息发送失败")
+                            toast("消息发送失败")
+                        }
+
+                        override fun onException(exception: Throwable?) {
+                            Log.e(TAG, "消息发送异常")
+                            toast("消息发送异常")
+                        }
+                    })
         }
     }
 

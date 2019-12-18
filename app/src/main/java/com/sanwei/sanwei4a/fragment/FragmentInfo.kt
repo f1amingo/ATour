@@ -1,22 +1,31 @@
 package com.sanwei.sanwei4a.fragment
 
 import android.os.Bundle
-import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.sanwei.sanwei4a.App
+import com.alibaba.fastjson.JSONObject
+import com.netease.nimlib.sdk.NIMClient
+import com.netease.nimlib.sdk.RequestCallback
+import com.netease.nimlib.sdk.RequestCallbackWrapper
+import com.netease.nimlib.sdk.msg.MessageBuilder
+import com.netease.nimlib.sdk.msg.MsgService
+import com.netease.nimlib.sdk.msg.MsgServiceObserve
+import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum
+import com.netease.nimlib.sdk.msg.model.IMMessage
+import com.netease.nimlib.sdk.msg.model.QueryDirectionEnum
+import com.netease.nimlib.sdk.msg.model.RecentContact
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.activity.ChatActivity
-import com.sanwei.sanwei4a.activity.SystemNotificationActivity
 import com.sanwei.sanwei4a.adapter.ItemNotification
 import com.sanwei.sanwei4a.adapter.NotificationListAdapter
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.uiThread
+
 
 /**
  * Created by Flamingo on 2019/12/14.
@@ -30,20 +39,55 @@ class FragmentInfo : BaseFragment() {
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        Log.d(TAG, "onViewCreated")
         initRecyclerView()
         initSwipeRefreshLayout()
-        for (i in 0..5) {
-            mAdapter.addData(ItemNotification())
-        }
+
+//        监听收到消息事件
+        initOnReceiveMessage()
+        getRecentSessions()
     }
 
-    private fun initSystemNotifications() {
-        z_cover_system_notification.setOnClickListener {
-            if (App.account == null)
-                toast("尚未登录")
-            else
-                startActivity<SystemNotificationActivity>()
-        }
+    private fun getRecentSessions() {
+        Log.e(TAG, "获取最近会话列表")
+        NIMClient.getService(MsgService::class.java).queryRecentContacts()
+                .setCallback(object : RequestCallbackWrapper<List<RecentContact?>?>() {
+                    override fun onResult(code: Int, recents: List<RecentContact?>?, e: Throwable?) {
+                        if (e != null) {
+                            Log.e(TAG, "IM获取最近会话列表异常 ${e.message}")
+                            toast("获取最近会话异常")
+                        }
+                        Log.e(TAG, "获取最近会话列表成功")
+                        recents!!.forEach {
+                            Log.e(TAG, JSONObject.toJSONString(it))
+                            it!!
+                            mAdapter.addData(ItemNotification(
+                                    contactId = it.contactId,
+                                    content = it.content,
+                                    fromAccount = it.fromAccount,
+                                    fromNick = it.fromNick,
+                                    recentMessageId = it.recentMessageId,
+                                    time = it.time,
+                                    unreadCount = it.unreadCount
+                            ))
+                        }
+                    }
+                })
+
+
+
+
+    }
+
+
+    private fun initOnReceiveMessage() {
+        NIMClient.getService(MsgServiceObserve::class.java)
+                .observeReceiveMessage({
+                    toast("收到一条新消息")
+                    it.forEach {
+                        Log.e("observeReceiveMessage", it.content)
+                    }
+                }, true)
     }
 
     private fun initSwipeRefreshLayout() {
@@ -61,18 +105,9 @@ class FragmentInfo : BaseFragment() {
         mAdapter = NotificationListAdapter(R.layout.z_item_notification, ArrayList())
         z_recycler_info.layoutManager = LinearLayoutManager(context)
         z_recycler_info.adapter = mAdapter
-
         mAdapter.setOnItemClickListener { _, _, position ->
-            val item = mAdapter.getItem(position)!!
-
-            when (item.type) {
-                ItemNotification.NotificationType.CHAT_MSG -> {
-                    startActivity<ChatActivity>()
-                }
-                ItemNotification.NotificationType.PLATFORM_MSG -> {
-
-                }
-            }
+            val item = mAdapter.getItem(position)
+            startActivity<ChatActivity>("accId" to item!!.contactId)
         }
     }
 }
