@@ -8,14 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.alibaba.fastjson.JSONObject
 import com.netease.nimlib.sdk.NIMClient
-import com.netease.nimlib.sdk.RequestCallback
+import com.netease.nimlib.sdk.Observer
 import com.netease.nimlib.sdk.RequestCallbackWrapper
-import com.netease.nimlib.sdk.msg.MessageBuilder
 import com.netease.nimlib.sdk.msg.MsgService
 import com.netease.nimlib.sdk.msg.MsgServiceObserve
-import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum
-import com.netease.nimlib.sdk.msg.model.IMMessage
-import com.netease.nimlib.sdk.msg.model.QueryDirectionEnum
 import com.netease.nimlib.sdk.msg.model.RecentContact
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.activity.ChatActivity
@@ -46,6 +42,14 @@ class FragmentInfo : BaseFragment() {
 //        监听收到消息事件
         initOnReceiveMessage()
         getRecentSessions()
+        initRecentContactUpdateListener()
+    }
+
+    private fun initRecentContactUpdateListener() {
+        NIMClient.getService(MsgServiceObserve::class.java)
+                .observeRecentContact({
+                    getRecentSessions()
+                }, true)
     }
 
     private fun getRecentSessions() {
@@ -58,6 +62,7 @@ class FragmentInfo : BaseFragment() {
                             toast("获取最近会话异常")
                         }
                         Log.e(TAG, "获取最近会话列表成功")
+                        mAdapter.mItems.clear()
                         recents!!.forEach {
                             Log.e(TAG, JSONObject.toJSONString(it))
                             it!!
@@ -73,8 +78,6 @@ class FragmentInfo : BaseFragment() {
                         }
                     }
                 })
-
-
 
 
     }
