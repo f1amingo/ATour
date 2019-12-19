@@ -42,7 +42,8 @@
                 style="@style/DocDetailsItemTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="川西稻城亚丁环线7日线路">
+                android:text="川西稻城亚丁环线7日线路"
+                android:id="@+id/productName">
             </TextView>
 
                 <TextView
@@ -80,7 +81,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="150dp"
                     android:layout_marginRight="@dimen/dp_16"
-                    android:text="线路价格：6000元" />
+                    android:text="线路价格：6000元"
+                    android:id="@+id/tourPrice"/>
 
             </LinearLayout>
 
@@ -273,7 +275,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="MG旅行社" />
+                        android:text="MG旅行社"
+                        android:id="@+id/merchantName"/>
                     <ImageView
                         android:id="@+id/z_img_chat_docDetails"
                         android:layout_width="wrap_content"
@@ -349,7 +352,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="12月6日"/>.
+                android:text="12月6日"
+                android:id="@+id/tourDay"/>.
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -379,7 +383,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:backgroundTint="@color/color_main"
-            android:text="确定行程" />
+            android:text="确定行程"
+            android:id ="@+id/confirmOrder"/>
 
         <!--        <Button-->
         <!--            android:layout_width="wrap_content"-->
