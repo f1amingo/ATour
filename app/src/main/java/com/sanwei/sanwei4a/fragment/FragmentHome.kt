@@ -64,7 +64,6 @@ class FragmentHome : BaseFragment() {
                 replaceFragment(mTabFragments[mTabTextList.indexOf(tab?.text)])
             }
         })
-
     }
 
     private fun initBanner() {

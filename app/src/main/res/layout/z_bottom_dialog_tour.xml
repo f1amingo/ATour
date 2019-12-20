@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="套餐选择"
+        android:textColor="@color/text_dark"
+        android:textStyle="bold" />
+
+    <org.apmem.tools.layouts.FlowLayout
+        android:id="@+id/flowlayout_tour"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="500dp"
+        android:padding="8dp">
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="8dp"-->
+        <!--            android:background="@drawable/shape_tour_selection"-->
+        <!--            android:paddingLeft="8dp"-->
+        <!--            android:paddingTop="5dp"-->
+        <!--            android:paddingRight="8dp"-->
+        <!--            android:paddingBottom="5dp"-->
+        <!--            android:text="仅游玩泸沽湖"-->
+        <!--            android:textColor="@color/text_gray" />-->
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="8dp"-->
+        <!--            android:background="@drawable/shape_tour_selection_active"-->
+        <!--            android:paddingLeft="8dp"-->
+        <!--            android:paddingTop="5dp"-->
+        <!--            android:paddingRight="8dp"-->
+        <!--            android:paddingBottom="5dp"-->
+        <!--            android:text="仅游玩泸沽湖"-->
+        <!--            android:textColor="@color/color_yellow_google" />-->
+    </org.apmem.tools.layouts.FlowLayout>
+
+    <Button
+        android:id="@+id/btn_select_tour"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="选择套餐"
+        android:textStyle="bold" />
+</LinearLayout>

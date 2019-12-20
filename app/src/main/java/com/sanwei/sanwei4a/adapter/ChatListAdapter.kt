@@ -15,7 +15,7 @@ import kotlin.collections.ArrayList
  * Created by VincentLaf on 2017/11/24.
  *
  */
-class ChatListAdapter(val mResId: Int, val mItems: ArrayList<ItemChatMsg>) :
+class ChatListAdapter(private val mResId: Int, val mItems: ArrayList<ItemChatMsg>) :
         BaseQuickAdapter<ItemChatMsg, BaseViewHolder>(mResId, mItems) {
 
     override fun convert(helper: BaseViewHolder?, item: ItemChatMsg?) {

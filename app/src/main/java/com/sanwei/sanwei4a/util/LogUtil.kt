@@ -10,15 +10,15 @@ class LogUtil {
 
     companion object {
 
-        val VERBOSE = 1
-        val DEBUG = 2
-        val INFO = 3
-        val WARN = 4
-        val ERROR = 5
+        private val VERBOSE = 1
+        private val DEBUG = 2
+        private val INFO = 3
+        private val WARN = 4
+        private val ERROR = 5
         //什么也不显示
-        val NOTHING = 6
+        private val NOTHING = 6
         //当前级别
-        val level = VERBOSE
+        private val level = VERBOSE
 
         fun v(tag: String, msg: String) {
             if (level <= VERBOSE) {

@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.BaseAdapter
 import com.alibaba.fastjson.JSONObject
 import com.netease.nimlib.sdk.NIMClient
 import com.netease.nimlib.sdk.RequestCallback
@@ -79,8 +80,6 @@ class ChatActivity : BaseActivity() {
                 }
             }
         })
-
-
     }
 
     private fun initBtnSend() {
