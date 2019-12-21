@@ -10,11 +10,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.makeramen.roundedimageview.RoundedImageView
 import com.sanwei.sanwei4a.R
-import com.sanwei.sanwei4a.util.LogUtil
 import com.willy.ratingbar.ScaleRatingBar
 import org.jetbrains.anko.find
 
-class ItemRestaurant : LinearLayout {
+class ItemRestaurantView : LinearLayout {
 
     var view: View = LayoutInflater.from(context).inflate(R.layout.item_restaurant, this, true)
 
@@ -25,7 +24,7 @@ class ItemRestaurant : LinearLayout {
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
-    fun setImg(src: String): ItemRestaurant {
+    fun setImg(src: String): ItemRestaurantView {
         Glide.with(context)
                 .load(src)
                 .apply(RequestOptions().error(R.drawable.test).placeholder(R.drawable.test))
@@ -33,7 +32,7 @@ class ItemRestaurant : LinearLayout {
         return this
     }
 
-    fun setTitle(title: String): ItemRestaurant {
+    fun setTitle(title: String): ItemRestaurantView {
         if (title.isBlank()) {
             return this
         }
@@ -43,17 +42,17 @@ class ItemRestaurant : LinearLayout {
         return this
     }
 
-    fun setName(name: String): ItemRestaurant {
+    fun setName(name: String): ItemRestaurantView {
         view.find<TextView>(R.id.txt_item_restaurant_name).text = name
         return this
     }
 
-    fun setRating(rating: Float): ItemRestaurant {
+    fun setRating(rating: Float): ItemRestaurantView {
         view.find<ScaleRatingBar>(R.id.rating_item_restaurant).rating = rating
         return this
     }
 
-    fun setCount(count: Int): ItemRestaurant {
+    fun setCount(count: Int): ItemRestaurantView {
         val text = "${count}条"
         view.find<TextView>(R.id.txt_item_restaurant_count).text = text
         return this

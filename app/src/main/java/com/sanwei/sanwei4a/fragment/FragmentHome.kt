@@ -34,7 +34,6 @@ class FragmentHome : BaseFragment() {
     private lateinit var mAdapter: ZHomeTourListAdapter
     private val mTabTextList = listOf("吃什么", "住哪里", "低价机票")
     private val mTabFragments = listOf<Fragment>(FragmentRestaurant(), FragmentHotel(), FragmentFlight())
-    private var hasScrollTop = false
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.home_fragment, container, false)!!
