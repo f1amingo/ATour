@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/img_item_hotel"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            app:riv_corner_radius="5dp" />
+
+        <TextView
+            android:id="@+id/txt_item_hotel_price"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/bg_semi_black_5"
+            android:gravity="center"
+            android:text="￥634"
+            android:textColor="@color/color_red_google"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_item_hotel_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="酒店名称"
+        android:textStyle="bold" />
+
+</LinearLayout>

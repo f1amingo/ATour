@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_parent">
@@ -163,14 +164,16 @@
             android:layout_height="wrap_content" />
 
         <LinearLayout
+            android:id="@+id/layout_home_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:minHeight="150dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="10dp"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:paddingLeft="5dp"
@@ -181,7 +184,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/z_recycler_home_tour"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 

@@ -5,7 +5,7 @@
     android:layout_height="100dp"
     android:layout_margin="5dp"
     android:background="@drawable/z_shape_bg_white_radius_10"
-    android:elevation="5dp"
+    android:elevation="3dp"
     android:orientation="horizontal">
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -29,8 +29,14 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:lines="2"
-            android:text="厦门鼓浪屿5日纯玩游 厦门鼓浪屿5日纯玩游 厦门鼓浪屿5日纯玩游 厦门鼓浪屿5日纯玩游 厦门鼓浪屿5日纯玩游 厦门鼓浪屿5日纯玩游 厦门鼓浪屿5日纯玩游 厦门鼓浪屿5日纯玩游 "
+            android:text="厦门鼓浪屿5日纯玩游 "
             android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white" />
 
         <TextView
             android:id="@+id/z_txt_tour_item_merchant"
