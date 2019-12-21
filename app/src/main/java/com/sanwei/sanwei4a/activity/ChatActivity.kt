@@ -24,6 +24,7 @@ import com.sanwei.sanwei4a.adapter.ChatListAdapter
 import com.sanwei.sanwei4a.adapter.ItemChatMsg
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 
 class ChatActivity : BaseActivity() {
 

@@ -27,7 +27,7 @@ class PresenterBookDetails : BasePresenter<IViewBookDetails>() {
             override fun onFail(msg: String?, code: Int) {
                 handler.post {
                     view?.loadFail()
-                    view?.toast(msg!!)
+
                 }
             }
         })
@@ -38,14 +38,12 @@ class PresenterBookDetails : BasePresenter<IViewBookDetails>() {
         modelRemove.removeBook(booId, object : OnRequestListener<Boolean> {
             override fun onSuccess(data: Boolean) {
                 handler.post {
-                    view?.toast("撤销成功")
                     view?.dismissWaitingDlg()
                 }
             }
 
             override fun onFail(msg: String?, code: Int) {
                 handler.post {
-                    view?.toast(msg!!)
                     view?.dismissWaitingDlg()
                 }
             }

@@ -32,6 +32,7 @@ import com.sanwei.sanwei4a.util.StringUtils
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.appcompat.v7.themedActionBarOverlayLayout
 import org.jetbrains.anko.find
+import org.jetbrains.anko.toast
 import java.io.IOException
 
 class RegisterActivity : BaseActivity() {

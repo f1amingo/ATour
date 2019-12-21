@@ -36,7 +36,6 @@ class PresenterBookList : BasePresenter<IViewBookList>() {
                 msg!!
                 LogUtil.e(TAG, msg)
                 handler.post {
-                    view?.toast(msg)
                     view?.loadMoreFail()
                     view?.setIsRefreshing(false)
                 }
@@ -60,7 +59,6 @@ class PresenterBookList : BasePresenter<IViewBookList>() {
                 msg!!
                 LogUtil.e(TAG, msg)
                 handler.post {
-                    view?.toast(msg)
                     view?.loadMoreFail()
                 }
             }

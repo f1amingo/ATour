@@ -38,7 +38,6 @@ class PresenterMineDetails : BasePresenter<IViewMineDetails>() {
             override fun onFail(msg: String?, code: Int) {
                 handler.post {
                     view?.loadFail()
-                    view?.toast(msg!!)
                 }
             }
         })
@@ -61,7 +60,6 @@ class PresenterMineDetails : BasePresenter<IViewMineDetails>() {
             override fun onSuccess(data: InformationParam) {
                 LogUtil.e(TAG, data.toString())
                 handler.post {
-                    view?.toast("修改成功")
                     view?.updateUserInfo(newVal, which)
                     view?.dismissWaitingDlg()
                 }
@@ -72,7 +70,6 @@ class PresenterMineDetails : BasePresenter<IViewMineDetails>() {
                     try {
                         LogUtil.e(TAG, msg!!)
                         println(msg)
-                        view?.toast(msg)
                         view?.dismissWaitingDlg()
                     } catch (e: Exception) {
                         e.printStackTrace()

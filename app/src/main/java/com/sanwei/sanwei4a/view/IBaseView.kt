@@ -7,8 +7,9 @@ import android.content.Context
  *
  */
 interface IBaseView {
-    fun toast(msg: String)
+    //    fun toast(msg: String)
     fun showWaitingDlg()
+
     fun dismissWaitingDlg()
-    fun ctx():Context
+    fun ctx(): Context
 }

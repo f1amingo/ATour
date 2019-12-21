@@ -14,10 +14,6 @@ abstract class BaseFragment : Fragment(), IBaseView {
 
     val TAG: String = this.javaClass.simpleName
 
-    override fun toast(msg: String) {
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-    }
-
     var mWaitingDlg: AlertDialog? = null
 
     override fun showWaitingDlg() {
