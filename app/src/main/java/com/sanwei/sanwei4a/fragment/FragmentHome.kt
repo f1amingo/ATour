@@ -1,26 +1,29 @@
 package com.sanwei.sanwei4a.fragment
 
 import android.content.Context
+import android.graphics.Point
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.facebook.common.logging.LoggingDelegate
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.activity.TourDetailsActivity
-import com.sanwei.sanwei4a.adapter.CustomPagerAdapter
 import com.sanwei.sanwei4a.adapter.ItemHomeTour
 import com.sanwei.sanwei4a.adapter.ZHomeTourListAdapter
+import com.sanwei.sanwei4a.util.LogUtil
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.home_fragment.*
-import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.dip
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.windowManager
 
 
 class FragmentHome : BaseFragment() {
@@ -28,16 +31,28 @@ class FragmentHome : BaseFragment() {
     private lateinit var mAdapter: ZHomeTourListAdapter
     private val mTabTextList = listOf("吃什么", "住哪里", "低价机票")
     private val mTabFragments = listOf<Fragment>(FragmentRestaurant(), FragmentHotel(), FragmentFlight())
+    private var hasScrollTop = false
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.home_fragment, container, false)!!
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        showWaitingDlg()
+        val display: Display = context.windowManager.defaultDisplay
+        val point = Point()
+        display.getSize(point)
+        LogUtil.e(TAG, "x=${point.x}, y=${point.y}")
+        val layoutParams = layout_home_recycler.layoutParams
+        layoutParams.height = point.y - dip(56) - dip(48) + dip(5)
+        Handler().postDelayed({
+            scroll_home.scrollTo(0, 0)
+            dismissWaitingDlg()
+        }, 1000)
+
         initBanner()
         initTab()
         initRecyclerView()
-//        initViewPager()
         replaceFragment(mTabFragments[0])
     }
 
@@ -90,11 +105,4 @@ class FragmentHome : BaseFragment() {
             startActivity<TourDetailsActivity>()
         }
     }
-
-//    private fun initViewPager() {
-//        z_pager_home.adapter =
-//                CustomPagerAdapter(childFragmentManager, mTabFragments)
-//        z_pager_home.setPagingEnabled(true)
-//    }
-
 }
