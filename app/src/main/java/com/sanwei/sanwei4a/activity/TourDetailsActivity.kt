@@ -1,7 +1,7 @@
 package com.sanwei.sanwei4a.activity
 
 //import com.alibaba.fastjson.JSONObject
-
+import com.sanwei.sanwei4a.activity.ConfirmDetailActivity
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -26,6 +26,8 @@ import okhttp3.*
 import org.apmem.tools.layouts.FlowLayout
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.find
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.textColor
 import java.io.IOException
 
@@ -65,43 +67,6 @@ class TourDetailsActivity : BaseActivity() {
         btn_confirm.setOnClickListener {
             this.mBottomDlg?.show()
         }
-
-
-//        confirmOrder.setOnClickListener {
-//            var okHttpClient = OkHttpClient()
-//            var JSON = MediaType.parse("application/json; charset=utf-8");
-//            var param = HashMap<String, String>()
-//            param.put("product_category", "定制游")
-//            param.put("state", "toPay")
-//            param.put("price", tourPrice.text.toString())
-//            param.put("date", tourDay.text.toString())
-//            param.put("merchant_name", merchantName.text.toString())
-//            param.put("product_name", z_txt_name_tour.text.toString())
-//            val jsonStr = com.alibaba.fastjson.JSONObject.toJSONString(param)
-//
-//            val request = Request.Builder()
-//                    .post(RequestBody.create(JSON, jsonStr))
-//                    .url("http://47.97.175.189:8080/Entity/U20dc5fd38286f/ATour/Order")
-//                    .build()
-//            okHttpClient.newCall(request).enqueue(object : Callback {
-//                override fun onFailure(call: Call, e: IOException) {
-//                    Log.d("1", "请求失败")
-//                }
-//
-//                override fun onResponse(call: Call, response: Response) {
-//                    if (response?.isSuccessful == true) {
-//                        Log.d("1", "请求成功")
-//                        val str = response.body()?.string()
-//
-//                        if (!str.isNullOrEmpty()) {
-//                            val result = JSONObject(str)
-//                            Log.d("123", str)
-//                        }
-//                    }
-//
-//                }
-//            })
-//        }
     }
 
     private fun initBottomView() {
@@ -110,6 +75,14 @@ class TourDetailsActivity : BaseActivity() {
         btnSelect = bottomView.find(R.id.btn_select_tour)
         btnSelect.setOnClickListener {
             toast("选择套餐${curSelection}")
+            startActivity<ConfirmDetailActivity>(
+                    "name" to name,
+                    "mId" to mId,
+                    "price" to price,
+                    "merchantName" to merchantName,
+                    "imageUrl"  to imgList[0],
+                    "curSelection" to curSelection
+            )
         }
         mBottomDlg = BottomSheetDialog(this)
         mBottomDlg!!.window!!.setBackgroundDrawable(ColorDrawable())

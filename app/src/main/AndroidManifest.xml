@@ -61,6 +61,7 @@
         <activity android:name=".activity.RestDetailsActivity"/>
         <activity android:name=".activity.HotelDetailsActivity"/>
         <activity android:name=".activity.TourDetailsActivity"/>
+        <activity android:name=".activity.ConfirmDetailActivity"/>
         <activity android:name=".activity.FlightDetailsActivity"/>
     </application>
 
