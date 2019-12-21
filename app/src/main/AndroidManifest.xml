@@ -63,6 +63,7 @@
         <activity android:name=".activity.TourDetailsActivity" />
         <activity android:name=".activity.FlightDetailsActivity" />
         <activity android:name=".activity.CommentActivity" />
+        <activity android:name=".activity.ConfirmDetailActivity"/>
     </application>
 
 </manifest>
