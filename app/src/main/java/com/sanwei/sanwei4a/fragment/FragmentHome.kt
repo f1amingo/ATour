@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.alibaba.fastjson.JSONObject
 import com.bumptech.glide.Glide
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.activity.TourDetailsActivity
@@ -21,9 +22,11 @@ import com.sanwei.sanwei4a.adapter.ZHomeTourListAdapter
 import com.sanwei.sanwei4a.util.LogUtil
 import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.home_fragment.*
+import okhttp3.*
 import org.jetbrains.anko.support.v4.dip
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.windowManager
+import java.io.IOException
 
 
 class FragmentHome : BaseFragment() {
@@ -39,6 +42,49 @@ class FragmentHome : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         showWaitingDlg()
+        initLayoutHeight()
+        initBanner()
+        initTab()
+        initRecyclerView()
+        replaceFragment(mTabFragments[0])
+        loadTourList()
+    }
+
+    private fun loadTourList() {
+        val url = "http://47.97.175.189:8080/Entity/U20dc5fd38286f/ATour/Tour/"
+        val client = OkHttpClient()
+        val request = Request.Builder()
+                .url(url)
+                .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                LogUtil.e(TAG, "请求失败")
+                LogUtil.e(TAG, e.message!!)
+                toast("请求失败")
+                dismissWaitingDlg()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val strBody = response.body()!!.string()
+                LogUtil.e(TAG, strBody)
+                val jsonObj = JSONObject.parseObject(strBody)
+                val jsonArray = jsonObj.getJSONArray("Tour")
+                jsonArray.forEach {
+                    val jObject = it as JSONObject
+                    val imgList = jObject.getJSONArray("img_list")
+                    mAdapter.addData(ItemHomeTour(
+                            jObject.getString("id"),
+                            imgList.getString(0),
+                            jObject.getString("name"),
+                            jObject.getString("merchant_name"),
+                            jObject.getString("price")
+                    ))
+                }
+            }
+        })
+    }
+
+    private fun initLayoutHeight() {
         val display: Display = context.windowManager.defaultDisplay
         val point = Point()
         display.getSize(point)
@@ -49,11 +95,6 @@ class FragmentHome : BaseFragment() {
             scroll_home.scrollTo(0, 0)
             dismissWaitingDlg()
         }, 1000)
-
-        initBanner()
-        initTab()
-        initRecyclerView()
-        replaceFragment(mTabFragments[0])
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -96,13 +137,9 @@ class FragmentHome : BaseFragment() {
         mAdapter = ZHomeTourListAdapter(R.layout.z_item_home_tour, ArrayList())
         z_recycler_home_tour.adapter = mAdapter
         z_recycler_home_tour.layoutManager = LinearLayoutManager(context)
-
-        mAdapter.addData(ItemHomeTour("", "", "", ""))
-        mAdapter.addData(ItemHomeTour("", "", "", ""))
-        mAdapter.addData(ItemHomeTour("", "", "", ""))
         mAdapter.setOnItemClickListener { _, _, position ->
-            val item = mAdapter.getItem(position)
-            startActivity<TourDetailsActivity>()
+            val item = mAdapter.getItem(position)!!
+            startActivity<TourDetailsActivity>("id" to item.id)
         }
     }
 }

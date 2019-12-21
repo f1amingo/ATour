@@ -54,7 +54,9 @@ class TourDetailsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tour_details)
         this.showWaitingDlg()
-        mId = "1576748697602" //todo 获取页面传参
+
+        mId = intent.getStringExtra("id")
+//        mId = "1576748697602"
 
         initRecyclerImg()
         initRecyclerDay()
@@ -132,6 +134,9 @@ class TourDetailsActivity : BaseActivity() {
     }
 
     private fun getDetails() {
+        if (mId.isBlank()) {
+            return
+        }
         val client = OkHttpClient()
         val url = "http://47.97.175.189:8080/Entity/U20dc5fd38286f/ATour/Tour/$mId"
         val request = Request.Builder()
