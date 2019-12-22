@@ -50,14 +50,14 @@ class FragmentMine : BaseFragment() {
         val view = inflater?.inflate(R.layout.mine_fragment, container, false)!!
 
         mBtnLogin = view.find(R.id.z_btn_login_mine)
-        mTxtName = view.find(R.id.z_txt_username_mine)
+        //mTxtName = view.find(R.id.z_txt_username_mine)
         mBalance = view.find(R.id.z_txt_points_balance)
         mProblem = view.find(R.id.z_txt_problem_manage_mine)
         return view
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        mTxtName.visibility = View.GONE
+        //mTxtName.visibility = View.GONE
 
         mBtnLogin.setOnClickListener {
             startActivityForResult(Intent(context, LoginActivity::class.java), mRcLogin)
@@ -82,7 +82,7 @@ class FragmentMine : BaseFragment() {
             fillUserInfo()
         }
 
-        initFourLayouts()
+        //initFourLayouts()
         initFourRows()
 
         bot_test.setOnClickListener(){
@@ -105,9 +105,9 @@ class FragmentMine : BaseFragment() {
     }
 
     private fun initFourRows() {
-        z_text_sanwei_mine.setOnClickListener { toast("敬请期待") }
-        z_text_gold_mine.setOnClickListener { toast("敬请期待") }
-        z_text_bridge_mine.setOnClickListener { toast("敬请期待") }
+       // z_text_sanwei_mine.setOnClickListener { toast("敬请期待") }
+       // z_text_gold_mine.setOnClickListener { toast("敬请期待") }
+       // z_text_bridge_mine.setOnClickListener { toast("敬请期待") }
         //z_text_grass_mine.setOnClickListener { toast("敬请期待") }
     }
 
