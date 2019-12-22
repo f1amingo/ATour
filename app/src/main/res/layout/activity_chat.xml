@@ -14,7 +14,7 @@
         android:gravity="right"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:navigationIcon="@drawable/ic_arrow_back"
-        app:title="Vila" />
+        app:title="官方直营店" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/z_recycler_chat"

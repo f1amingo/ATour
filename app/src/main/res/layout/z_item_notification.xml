@@ -20,7 +20,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:src="@drawable/ic_cheese" />
+            android:src="@mipmap/logo" />
 
         <LinearLayout
             android:layout_width="match_parent"

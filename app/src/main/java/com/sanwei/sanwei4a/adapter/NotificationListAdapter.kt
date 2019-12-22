@@ -16,7 +16,7 @@ class NotificationListAdapter(private val mResId: Int, val mItems: MutableList<I
     override fun convert(helper: BaseViewHolder?, item: ItemNotification?) {
         helper!!
         item!!
-        helper.setText(R.id.z_txt_nick_session, item.fromNick)
+        helper.setText(R.id.z_txt_nick_session, "官方直营店")
         helper.setText(R.id.z_txt_time_session, SimpleDateFormat("MM-dd hh:mm:ss", Locale.CHINA).format(item.time))
         helper.setText(R.id.z_txt_content_session, item.content)
         helper.setText(R.id.txt_badge_notification_item, item.unreadCount.toString())

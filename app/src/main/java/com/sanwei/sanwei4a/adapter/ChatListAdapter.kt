@@ -21,7 +21,7 @@ class ChatListAdapter(private val mResId: Int, val mItems: ArrayList<ItemChatMsg
     override fun convert(helper: BaseViewHolder?, item: ItemChatMsg?) {
         item!!
         helper!!
-        val formatTime = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.CHINA).format(item.time)
+        val formatTime = SimpleDateFormat("MM/dd hh:mm:ss", Locale.CHINA).format(item.time)
         if (item.direct == MsgDirectionEnum.Out) {
             helper.setText(R.id.z_txt_chat_right, item.content)
                     .setText(R.id.z_txt_chat_time_right, formatTime)
