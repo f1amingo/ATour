@@ -48,6 +48,7 @@ class TourDetailsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        LogUtil.e(TAG, "onCreate")
         setContentView(R.layout.activity_tour_details)
         this.showWaitingDlg()
 
@@ -120,7 +121,7 @@ class TourDetailsActivity : BaseActivity() {
         flowlayout = bottomView.find(R.id.flowlayout_tour)
         btnSelect = bottomView.find(R.id.btn_select_tour)
         btnSelect.setOnClickListener {
-            toast("选择套餐${curSelection}")
+//            toast("选择套餐${curSelection}")
             startActivity<ConfirmDetailActivity>(
                     "name" to name,
                     "mId" to mId,
