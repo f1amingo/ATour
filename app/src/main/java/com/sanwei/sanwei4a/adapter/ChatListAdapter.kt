@@ -1,6 +1,7 @@
 package com.sanwei.sanwei4a.adapter
 
 import android.view.View
+import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.netease.nimlib.sdk.msg.constant.MsgDirectionEnum
@@ -22,6 +23,15 @@ class ChatListAdapter(private val mResId: Int, val mItems: ArrayList<ItemChatMsg
         item!!
         helper!!
         val formatTime = SimpleDateFormat("MM/dd hh:mm:ss", Locale.CHINA).format(item.time)
+        if (item.isBot) {
+            Glide.with(mContext)
+                    .load(mContext.getDrawable(R.drawable.ic_android))
+                    .into(helper.getView(R.id.z_img_chat_left))
+        } else {
+            Glide.with(mContext)
+                    .load(mContext.getDrawable(R.mipmap.logo))
+                    .into(helper.getView(R.id.z_img_chat_left))
+        }
         if (item.direct == MsgDirectionEnum.Out) {
             helper.setText(R.id.z_txt_chat_right, item.content)
                     .setText(R.id.z_txt_chat_time_right, formatTime)
@@ -48,5 +58,6 @@ class ChatListAdapter(private val mResId: Int, val mItems: ArrayList<ItemChatMsg
 class ItemChatMsg(
         val content: String,
         val time: Long,
-        val direct: MsgDirectionEnum) {
-}
+        val direct: MsgDirectionEnum,
+        val isBot: Boolean = false
+)

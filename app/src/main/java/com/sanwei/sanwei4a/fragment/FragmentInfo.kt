@@ -1,5 +1,6 @@
 package com.sanwei.sanwei4a.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -17,13 +18,18 @@ import com.netease.nimlib.sdk.msg.model.IMMessage
 import com.netease.nimlib.sdk.msg.model.RecentContact
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.activity.ChatActivity
+import com.sanwei.sanwei4a.activity.ChatBotActivity
 import com.sanwei.sanwei4a.adapter.ItemNotification
 import com.sanwei.sanwei4a.adapter.NotificationListAdapter
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.startActivityForResult
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.uiThread
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -42,10 +48,25 @@ class FragmentInfo : BaseFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         Log.d(TAG, "onViewCreated")
+
+        cover_notification_chat_bot.setOnClickListener {
+            startActivityForResult<ChatBotActivity>(1)
+        }
+
         initRecyclerView()
         initSwipeRefreshLayout()
         getRecentSessions()
         initRecentContactUpdateListener()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == 1) {
+            val content = data!!.getStringExtra("content")
+            val time = data.getLongExtra("time", Date().time)
+            txt_chat_bot_notification.text = content
+            txt_chat_bot_notification_time.text = SimpleDateFormat("YYYY-MM-dd hh:mm:ss", Locale.CHINA).format(time)
+        }
     }
 
     override fun onResume() {

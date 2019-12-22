@@ -49,7 +49,6 @@ class ChatActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        accId = intent.getStringExtra("accId")
 
         mToolbar = find(R.id.z_toolbar_chat)
         mRecyclerView = find(R.id.z_recycler_chat)

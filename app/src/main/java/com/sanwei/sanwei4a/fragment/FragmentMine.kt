@@ -31,7 +31,6 @@ import java.io.IOException
 import org.jetbrains.anko.support.v4.toast
 
 
-
 /**
  * Created by Johnson on 2018/3/31.
  *
@@ -66,7 +65,6 @@ class FragmentMine : BaseFragment() {
 
         bot_test.setOnClickListener {
             val message = query_message.getText().toString()
-            chatbot(message)
         }
 
         layout_mine_order.setOnClickListener {
@@ -80,36 +78,5 @@ class FragmentMine : BaseFragment() {
         }
     }
 
-    private fun chatbot(message: String){
-        var okHttpClient = OkHttpClient()
-        var JSON = MediaType.parse("application/json; charset=utf-8");
-        var param = HashMap<String, String>()
-        param.put("spoken", message)
-        param.put("userid", "user")
-        val jsonStr = JSONObject.toJSONString(param)
-        Log.d("test",jsonStr)
-        val request = Request.Builder()
-                .post(RequestBody.create(JSON, jsonStr))
-                .url("https://api.ownthink.com/bot")
-                .build()
 
-        okHttpClient.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                Log.d("fail","failure")
-            }
-
-            override fun onResponse(call: Call, response: Response) {
-                if (response?.isSuccessful == true) {
-                    val strBody = response.body()!!.string()
-                    LogUtil.e(TAG, strBody)
-                    val jsonObj = JSONObject.parseObject(strBody)
-                    result = jsonObj.getJSONObject("data").getJSONObject("info").getString("text")
-                    getActivity().runOnUiThread{
-                        show_result.setText(result)
-                    }
-                }
-            }
-        })
-
-    }
 }

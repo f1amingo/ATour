@@ -280,7 +280,7 @@
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
-                    android:text="客服测试" />
+                    android:text="附近有什么好吃的" />
 
                 <Button
                     android:id="@+id/bot_test"
