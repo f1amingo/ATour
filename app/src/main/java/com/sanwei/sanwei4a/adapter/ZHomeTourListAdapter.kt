@@ -19,10 +19,10 @@ class ZHomeTourListAdapter(val mResId: Int, val mItems: ArrayList<ItemHomeTour>)
                 .into(helper.getView(R.id.z_img_tour_item))
         helper.setText(R.id.z_txt_tour_item_title, item.title)
         helper.setText(R.id.z_txt_tour_item_merchant, "店铺：${item.merchant}")
-        helper.setText(R.id.z_txt_tour_item_sale, "￥ ${item.price}")
-    }
-}
 
+helper.setText(R.id.z_txt_tour_item_sale, "￥ ${item.price}")
+}
+}
 class ItemHomeTour(
         val id: String,
         val img: String,

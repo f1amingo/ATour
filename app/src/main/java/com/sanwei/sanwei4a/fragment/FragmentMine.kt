@@ -24,6 +24,7 @@ import com.sanwei.sanwei4a.util.LogUtil
 import kotlinx.android.synthetic.main.mine_fragment.*
 import okhttp3.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.find
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.startActivityForResult
@@ -89,6 +90,12 @@ class FragmentMine : BaseFragment() {
 
             var message = query_message.getText().toString()
             chatbot(message)
+        }
+
+
+        skip_my_order.setOnClickListener(){
+
+            startActivity<MyOrderActivity>()
         }
     }
 

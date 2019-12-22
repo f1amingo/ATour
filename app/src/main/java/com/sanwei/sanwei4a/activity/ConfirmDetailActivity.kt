@@ -48,6 +48,7 @@ class ConfirmDetailActivity : AppCompatActivity() {
             param.put("merchant_name", merchantName)
             param.put("product_name", productName)
             param.put("product_id",mId)
+            param.put("section_name",curSelection)
             val jsonStr = JSONObject.toJSONString(param)
             val request = Request.Builder()
                     .post(RequestBody.create(JSON, jsonStr))

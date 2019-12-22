@@ -31,18 +31,6 @@
             android:backgroundTint="@color/white"
             android:text="克里斯多夫"
             android:textColor="@color/colorPrimary" />
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/z_txt_username_mine"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_below="@id/z_img_head_mine"-->
-        <!--            android:layout_centerHorizontal="true"-->
-        <!--            android:layout_marginTop="8dp"-->
-        <!--            android:text="姓名"-->
-        <!--            android:textColor="@color/colorPrimary"-->
-        <!--            android:textColor="@color/white" />-->
-
     </RelativeLayout>
 
     <ScrollView
@@ -94,6 +82,7 @@
                     android:padding="8dp">
 
                     <ImageView
+                        android:id="@+id/skip_my_order"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/mine_release" />
