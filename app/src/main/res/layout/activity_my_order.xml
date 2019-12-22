@@ -5,58 +5,63 @@
     android:layout_height="match_parent"
     android:background="@color/white_parent"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@color/colorPrimary">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/z_img_head_mine"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:src="@drawable/user1"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/user"
             fresco:civ_border_color="@color/white_parent"
             fresco:civ_border_width="1dp" />
+
         <Button
-            android:id="@+id/z_btn_login_mine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/z_img_head_mine"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/white"
+            android:clickable="false"
             android:text="克里斯多夫"
             android:textColor="@color/colorPrimary" />
     </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:text="我的订单"
+        android:textColor="@color/text_dark"
+        android:textStyle="bold" />
+
     <ScrollView
         android:id="@+id/scroll_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white_parent">
-    <LinearLayout
-        android:id="@+id/layout_home_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:minHeight="150dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/white"
-            android:gravity="center_vertical"
-            android:paddingLeft="5dp"
-            android:text="我的订单"
-            android:textColor="@color/text_dark"
-            android:textStyle="bold" />
 
+        <LinearLayout
+            android:id="@+id/layout_home_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="150dp"
+            android:orientation="vertical">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/z_recycler_my_order"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

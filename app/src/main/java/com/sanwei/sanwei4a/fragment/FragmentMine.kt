@@ -24,7 +24,6 @@ import com.sanwei.sanwei4a.util.LogUtil
 import kotlinx.android.synthetic.main.mine_fragment.*
 import okhttp3.*
 import org.jetbrains.anko.find
-import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.support.v4.find
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.startActivityForResult
@@ -39,32 +38,19 @@ import org.jetbrains.anko.support.v4.toast
  */
 class FragmentMine : BaseFragment() {
 
-    private lateinit var mBtnLogin: Button
-    private lateinit var mTxtName: TextView
     private lateinit var mBalance: TextView
-    private lateinit var mInviteCode: TextView
     private lateinit var mProblem: TextView
     private val mRcLogin = 7
     private val mRcModify = 77
     private var result = "sorry,I can't get it!"
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(R.layout.mine_fragment, container, false)!!
-
-        mBtnLogin = view.find(R.id.z_btn_login_mine)
-        //mTxtName = view.find(R.id.z_txt_username_mine)
         mBalance = view.find(R.id.z_txt_points_balance)
         mProblem = view.find(R.id.z_txt_problem_manage_mine)
         return view
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        //mTxtName.visibility = View.GONE
-
-        mBtnLogin.setOnClickListener {
-            startActivityForResult(Intent(context, LoginActivity::class.java), mRcLogin)
-        }
-
-
         z_img_head_mine.setOnClickListener {
             if (App.account == null) {
                 startActivityForResult(Intent(context, LoginActivity::class.java), mRcLogin)
@@ -75,47 +61,17 @@ class FragmentMine : BaseFragment() {
         mProblem.setOnClickListener {
             startActivity(Intent(context, ProblemActivity::class.java))
         }
-        initAddressManage()
 
         initProblem()
 
-        if (App.account != null) {
-            fillUserInfo()
-        }
-
-        //initFourLayouts()
-        initFourRows()
-
-        bot_test.setOnClickListener(){
-
-            var message = query_message.getText().toString()
+        bot_test.setOnClickListener {
+            val message = query_message.getText().toString()
             chatbot(message)
         }
 
-
-        skip_my_order.setOnClickListener(){
-
+        layout_mine_order.setOnClickListener {
             startActivity<MyOrderActivity>()
         }
-    }
-
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        if (App.account != null) {
-            try {
-                z_txt_points_balance.text = App.account!!.accBanlance.toString()
-                FileHelper.saveAccountInfo(App.account!!)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    private fun initFourRows() {
-       // z_text_sanwei_mine.setOnClickListener { toast("敬请期待") }
-       // z_text_gold_mine.setOnClickListener { toast("敬请期待") }
-       // z_text_bridge_mine.setOnClickListener { toast("敬请期待") }
-        //z_text_grass_mine.setOnClickListener { toast("敬请期待") }
     }
 
     private fun initProblem() {
@@ -125,7 +81,6 @@ class FragmentMine : BaseFragment() {
     }
 
     private fun chatbot(message: String){
-
         var okHttpClient = OkHttpClient()
         var JSON = MediaType.parse("application/json; charset=utf-8");
         var param = HashMap<String, String>()
@@ -156,84 +111,5 @@ class FragmentMine : BaseFragment() {
             }
         })
 
-    }
-
-    private fun initFourLayouts() {
-        z_layout_one_release_mine.setOnClickListener {
-            if (App.account == null) {
-                toast("尚未登录")
-            } else {
-                startActivity<BookListActivity>("type" to TYPE_PUBLISHED)
-            }
-        }
-        z_layout_two_out_mine.setOnClickListener {
-            if (App.account == null) {
-                toast("尚未登录")
-            } else {
-                startActivity<BookListActivity>("type" to TYPE_SENT)
-            }
-        }
-        z_layout_three_in_mine.setOnClickListener {
-            if (App.account == null) {
-                toast("尚未登录")
-            } else {
-                startActivity<BookListActivity>("type" to TYPE_BORROWED)
-            }
-        }
-        z_layout_four_wanted_mine.setOnClickListener {
-            if (App.account == null) {
-                toast("尚未登录")
-            } else {
-                startActivity<BookListActivity>("type" to TYPE_FAVORITE)
-            }
-        }
-    }
-
-    private fun initAddressManage() {
-        find<TextView>(R.id.z_txt_address_manage_mine).setOnClickListener {
-            if (App.account != null)
-                startActivity<AddressManageActivity>()
-            else
-                toast("尚未登陆")
-        }
-    }
-
-    private fun fillUserInfo() {
-        loadUserHeadImg()
-        mTxtName.visibility = View.VISIBLE
-        mTxtName.text = App.account?.accNickname
-        mBalance.text = App.account?.accBanlance.toString()
-        mInviteCode.text = App.account?.accInvitecode
-        mBtnLogin.visibility = View.GONE
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        when (requestCode) {
-            mRcLogin -> {
-                if (resultCode == Activity.RESULT_OK) {
-                    fillUserInfo()
-                }
-            }
-            mRcModify -> {
-                if (resultCode == Activity.RESULT_OK) {
-                    LogUtil.d(TAG, "用户头像或昵称已修改")
-                    if (App.account == null) {
-                        mBtnLogin.visibility = View.VISIBLE
-                        mTxtName.visibility = View.GONE
-                        z_img_head_mine.setImageResource(R.drawable.ic_cheese)
-                    } else {
-                        loadUserHeadImg()
-                        mTxtName.text = App.account!!.accNickname
-                    }
-                }
-            }
-        }
-    }
-
-    private fun loadUserHeadImg() {
-        Glide.with(this)
-                .load(App.getImgUrl())
-                .apply(RequestOptions().error(R.drawable.ic_cheese).placeholder(R.drawable.ic_cheese))
-                .into(z_img_head_mine)
     }
 }

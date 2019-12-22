@@ -51,7 +51,6 @@ class FragmentHome : BaseFragment() {
         replaceFragment(mTabFragments[0])
         loadTourList()
 
-
         z_txt_home_location.setOnClickListener {
             startActivity<CommentActivity>("tourId" to "1576748697602")
         }

@@ -17,18 +17,19 @@
             android:layout_height="64dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:src="@drawable/user1"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/user"
             fresco:civ_border_color="@color/white_parent"
             fresco:civ_border_width="1dp" />
 
         <Button
-            android:id="@+id/z_btn_login_mine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/z_img_head_mine"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/white"
+            android:clickable="false"
             android:text="克里斯多夫"
             android:textColor="@color/colorPrimary" />
     </RelativeLayout>
@@ -46,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white">
+
                 <LinearLayout
                     android:id="@+id/z_layout_four_wanted_mine"
                     android:layout_width="0dp"
@@ -69,8 +71,9 @@
                         android:text="我的收藏" />
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:id="@+id/z_layout_one_release_mine"
+                    android:id="@+id/layout_mine_order"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -82,7 +85,6 @@
                     android:padding="8dp">
 
                     <ImageView
-                        android:id="@+id/skip_my_order"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/mine_release" />
@@ -146,8 +148,8 @@
                 </LinearLayout>
 
 
-
             </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -176,6 +178,7 @@
                     android:src="@drawable/ic_right" />
 
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -232,6 +235,7 @@
                     android:src="@drawable/ic_right" />
 
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -352,14 +356,15 @@
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
-                    android:drawablePadding="8dp"
                     android:drawableLeft="@drawable/ic_update_software"
+                    android:drawablePadding="8dp"
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
                     android:text="检查更新" />
 
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -376,7 +381,6 @@
                     android:text="回调测试" />
 
             </RelativeLayout>
-
 
 
         </LinearLayout>

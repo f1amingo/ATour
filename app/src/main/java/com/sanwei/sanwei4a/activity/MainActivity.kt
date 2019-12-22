@@ -50,9 +50,6 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
                 R.id.navigation_home -> mViewPager.currentItem = 0
                 R.id.navigation_friends -> mViewPager.currentItem = 1
                 R.id.navigation_mine -> mViewPager.currentItem = 2
-//                R.id.navigation_discover -> mViewPager.currentItem = 1
-//                R.id.navigation_friends -> mViewPager.currentItem = 2
-//                R.id.navigation_mine -> mViewPager.currentItem = 3
             }
             return@setOnNavigationItemSelectedListener true
         }
@@ -63,12 +60,11 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener {
         mViewPager.addOnPageChangeListener(this)
         val fragments = ArrayList<Fragment>(4)
         fragments.add(FragmentHome())
-//        fragments.add(FragmentKnowledge())
         fragments.add(FragmentInfo())
         fragments.add(FragmentMine())
         mViewPager.adapter = CustomPagerAdapter(supportFragmentManager, fragments)
         mViewPager.setPagingEnabled(true)
-//        mViewPager.offscreenPageLimit = 3
+        mViewPager.offscreenPageLimit = 3
     }
 
     override fun onPageScrollStateChanged(state: Int) = Unit
