@@ -8,23 +8,24 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.BaseAdapter
-import com.alibaba.fastjson.JSONObject
 import com.netease.nimlib.sdk.NIMClient
+import com.netease.nimlib.sdk.Observer
 import com.netease.nimlib.sdk.RequestCallback
 import com.netease.nimlib.sdk.RequestCallbackWrapper
 import com.netease.nimlib.sdk.msg.MessageBuilder
 import com.netease.nimlib.sdk.msg.MsgService
+import com.netease.nimlib.sdk.msg.MsgServiceObserve
 import com.netease.nimlib.sdk.msg.constant.MsgDirectionEnum
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum
 import com.netease.nimlib.sdk.msg.model.IMMessage
-import com.netease.nimlib.sdk.msg.model.QueryDirectionEnum
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.adapter.ChatListAdapter
 import com.sanwei.sanwei4a.adapter.ItemChatMsg
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
+
 
 class ChatActivity : BaseActivity() {
 
@@ -34,6 +35,15 @@ class ChatActivity : BaseActivity() {
     private lateinit var mAdapter: ChatListAdapter
     private var mInput: String = ""
     private var accId: String = ""
+    private val onMsgReceiveListener = Observer<List<IMMessage>> {
+        it.reversed().forEach {
+            val newItem = ItemChatMsg(it.content, System.currentTimeMillis(), MsgDirectionEnum.In)
+            mAdapter.addData(newItem)
+            mRecyclerView.scrollToPosition(mAdapter.itemCount - 1)
+        }
+        NIMClient.getService(MsgService::class.java)
+                .clearUnreadCount(accId, SessionTypeEnum.P2P)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +64,21 @@ class ChatActivity : BaseActivity() {
         fetchChatRecord()
     }
 
+    override fun onResume() {
+        super.onResume()
+        initOnReceiveMessage(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        initOnReceiveMessage(false)
+    }
+
+    private fun initOnReceiveMessage(register: Boolean) {
+        NIMClient.getService(MsgServiceObserve::class.java)
+                .observeReceiveMessage(onMsgReceiveListener, register)
+    }
+
     private fun initEditText() {
         z_input_chat.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(p0: Editable?) = Unit
@@ -70,17 +95,31 @@ class ChatActivity : BaseActivity() {
 
     private fun fetchChatRecord() {
         val anchor = MessageBuilder.createEmptyMessage("test1", SessionTypeEnum.P2P, 0)
-        NIMClient.getService(MsgService::class.java).queryMessageListEx(anchor, QueryDirectionEnum.QUERY_NEW,
-                20, true).setCallback(object : RequestCallbackWrapper<List<IMMessage>>() {
-            override fun onResult(code: Int, result: List<IMMessage>?, exception: Throwable?) {
-                Log.e(TAG, "获取聊天记录成功")
-                result!!.forEach {
-                    Log.e(TAG, JSONObject.toJSONString(it))
-                    mAdapter.addData(ItemChatMsg(it.content, it.time, it.direct))
-                    mRecyclerView.smoothScrollToPosition(mAdapter.itemCount - 1)
-                }
-            }
-        })
+        NIMClient.getService(MsgService::class.java)
+                .pullMessageHistory(anchor, 50, true)
+                .setCallback(object : RequestCallbackWrapper<List<IMMessage>>() {
+                    override fun onResult(code: Int, result: List<IMMessage>?, exception: Throwable?) {
+                        Log.e(TAG, "获取聊天记录成功")
+                        result?.reversed()?.forEach {
+                            mAdapter.addData(ItemChatMsg(it.content, it.time, it.direct))
+                            mRecyclerView.smoothScrollToPosition(mAdapter.itemCount - 1)
+                        }
+                    }
+                })
+//        本地查询（数据不同步）
+//        NIMClient.getService(MsgService::class.java)
+//                .queryMessageListEx(anchor, QueryDirectionEnum.QUERY_NEW,
+//                        20, true).setCallback(object : RequestCallbackWrapper<List<IMMessage>>() {
+//                    override fun onResult(code: Int, result: List<IMMessage>?, exception: Throwable?) {
+//                        Log.e(TAG, "获取聊天记录成功")
+//                        if (result != null) {
+//                            result.forEach {
+//                                mAdapter.addData(ItemChatMsg(it.content, it.time, it.direct))
+//                                mRecyclerView.smoothScrollToPosition(mAdapter.itemCount - 1)
+//                            }
+//                        }
+//                    }
+//                })
     }
 
     private fun initBtnSend() {

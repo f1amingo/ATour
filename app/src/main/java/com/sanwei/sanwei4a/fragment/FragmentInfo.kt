@@ -12,6 +12,8 @@ import com.netease.nimlib.sdk.Observer
 import com.netease.nimlib.sdk.RequestCallbackWrapper
 import com.netease.nimlib.sdk.msg.MsgService
 import com.netease.nimlib.sdk.msg.MsgServiceObserve
+import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum
+import com.netease.nimlib.sdk.msg.model.IMMessage
 import com.netease.nimlib.sdk.msg.model.RecentContact
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.activity.ChatActivity
@@ -30,6 +32,9 @@ import org.jetbrains.anko.uiThread
 class FragmentInfo : BaseFragment() {
 
     private lateinit var mAdapter: NotificationListAdapter
+    private val onMsgReceiveListener = Observer<List<IMMessage>> {
+        toast("收到一条新消息")
+    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_info, container, false)!!
@@ -39,11 +44,18 @@ class FragmentInfo : BaseFragment() {
         Log.d(TAG, "onViewCreated")
         initRecyclerView()
         initSwipeRefreshLayout()
-
-//        监听收到消息事件
-        initOnReceiveMessage()
         getRecentSessions()
         initRecentContactUpdateListener()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        initOnReceiveMessage(true)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        initOnReceiveMessage(false)
     }
 
     private fun initRecentContactUpdateListener() {
@@ -64,7 +76,7 @@ class FragmentInfo : BaseFragment() {
                         }
                         Log.e(TAG, "获取最近会话列表成功")
                         mAdapter.mItems.clear()
-                        recents!!.forEach {
+                        recents?.forEach {
                             Log.e(TAG, JSONObject.toJSONString(it))
                             it!!
                             mAdapter.addData(ItemNotification(
@@ -79,19 +91,11 @@ class FragmentInfo : BaseFragment() {
                         }
                     }
                 })
-
-
     }
 
-
-    private fun initOnReceiveMessage() {
+    private fun initOnReceiveMessage(register: Boolean) {
         NIMClient.getService(MsgServiceObserve::class.java)
-                .observeReceiveMessage({
-                    toast("收到一条新消息")
-                    it.forEach {
-                        Log.e("observeReceiveMessage", it.content)
-                    }
-                }, true)
+                .observeReceiveMessage(onMsgReceiveListener, register)
     }
 
     private fun initSwipeRefreshLayout() {
@@ -112,6 +116,8 @@ class FragmentInfo : BaseFragment() {
         mAdapter.setOnItemClickListener { _, _, position ->
             val item = mAdapter.getItem(position)
             startActivity<ChatActivity>("accId" to item!!.contactId)
+            NIMClient.getService(MsgService::class.java)
+                    .clearUnreadCount(item.contactId, SessionTypeEnum.P2P)
         }
     }
 }

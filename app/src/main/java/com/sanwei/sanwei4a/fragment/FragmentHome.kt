@@ -73,7 +73,7 @@ class FragmentHome : BaseFragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 val strBody = response.body()!!.string()
-                LogUtil.e(TAG, strBody)
+//                LogUtil.e(TAG, strBody)
                 val jsonObj = JSONObject.parseObject(strBody)
                 val jsonArray = jsonObj.getJSONArray("Tour")
                 jsonArray.forEach {

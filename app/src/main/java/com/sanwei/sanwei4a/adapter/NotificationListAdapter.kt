@@ -3,7 +3,6 @@ package com.sanwei.sanwei4a.adapter
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.sanwei.sanwei4a.R
-import kotlinx.android.synthetic.main.z_item_notification.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -20,6 +19,12 @@ class NotificationListAdapter(private val mResId: Int, val mItems: MutableList<I
         helper.setText(R.id.z_txt_nick_session, item.fromNick)
         helper.setText(R.id.z_txt_time_session, SimpleDateFormat("MM-dd hh:mm:ss", Locale.CHINA).format(item.time))
         helper.setText(R.id.z_txt_content_session, item.content)
+        helper.setText(R.id.txt_badge_notification_item, item.unreadCount.toString())
+        if (item.unreadCount > 0) {
+            helper.setVisible(R.id.txt_badge_notification_item, true)
+        } else {
+            helper.setVisible(R.id.txt_badge_notification_item, false)
+        }
     }
 }
 
