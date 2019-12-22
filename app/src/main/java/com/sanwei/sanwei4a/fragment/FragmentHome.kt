@@ -16,6 +16,7 @@ import android.widget.ImageView
 import com.alibaba.fastjson.JSONObject
 import com.bumptech.glide.Glide
 import com.sanwei.sanwei4a.R
+import com.sanwei.sanwei4a.activity.CommentActivity
 import com.sanwei.sanwei4a.activity.TourDetailsActivity
 import com.sanwei.sanwei4a.adapter.ItemHomeTour
 import com.sanwei.sanwei4a.adapter.ZHomeTourListAdapter
@@ -24,7 +25,9 @@ import com.youth.banner.loader.ImageLoader
 import kotlinx.android.synthetic.main.home_fragment.*
 import okhttp3.*
 import org.jetbrains.anko.support.v4.dip
+import org.jetbrains.anko.support.v4.onUiThread
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.windowManager
 import java.io.IOException
 
@@ -47,6 +50,11 @@ class FragmentHome : BaseFragment() {
         initRecyclerView()
         replaceFragment(mTabFragments[0])
         loadTourList()
+
+
+        z_txt_home_location.setOnClickListener {
+            startActivity<CommentActivity>("tourId" to "1576748697602")
+        }
     }
 
     private fun loadTourList() {
@@ -71,13 +79,15 @@ class FragmentHome : BaseFragment() {
                 jsonArray.forEach {
                     val jObject = it as JSONObject
                     val imgList = jObject.getJSONArray("img_list")
-                    mAdapter.addData(ItemHomeTour(
-                            jObject.getString("id"),
-                            imgList.getString(0),
-                            jObject.getString("name"),
-                            jObject.getString("merchant_name"),
-                            jObject.getString("price")
-                    ))
+                    onUiThread {
+                        mAdapter.addData(ItemHomeTour(
+                                jObject.getString("id"),
+                                imgList.getString(0),
+                                jObject.getString("name"),
+                                jObject.getString("merchant_name"),
+                                jObject.getString("price")
+                        ))
+                    }
                 }
             }
         })

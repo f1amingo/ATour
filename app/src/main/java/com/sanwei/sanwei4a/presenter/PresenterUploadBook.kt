@@ -31,7 +31,6 @@ class PresenterUploadBook : BasePresenter<IViewUploadBook>() {
                 handler.post({
                     try {
                         view?.fillTheBookInfo(books)
-                        view?.toast("获取书籍信息成功")
                     } catch (e: Exception) {
                         e.printStackTrace()
                     }
@@ -42,7 +41,6 @@ class PresenterUploadBook : BasePresenter<IViewUploadBook>() {
             override fun onFail(msg: String?, code: Int) {
                 handler.post {
                     try {
-                        view?.toast("获取书籍信息失败")
                         when (code) {
                             Constant.NOT_FOUND -> {
                                 view?.noSuchBook()
@@ -64,7 +62,6 @@ class PresenterUploadBook : BasePresenter<IViewUploadBook>() {
         modelUpload.request(book, frontFile, inPic, endPic, object : OnRequestListener<Int> {
             override fun onSuccess(data: Int) {
                 handler.post {
-                    view?.toast("发布成功")
                     view?.dismissWaitingDlg()
                     view?.finish()
                     Router.toBookDetails(view?.ctx(), ShowType.bookDetails_mine, data)
@@ -84,7 +81,6 @@ class PresenterUploadBook : BasePresenter<IViewUploadBook>() {
                 msg!!
                 LogUtil.e(TAG, msg)
                 handler.post {
-                    view?.toast(msg)
                     view?.dismissWaitingDlg()
                 }
             }

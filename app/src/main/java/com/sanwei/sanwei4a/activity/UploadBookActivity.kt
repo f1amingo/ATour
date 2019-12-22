@@ -38,6 +38,7 @@ import kotlinx.android.synthetic.main.activity_upload_book.*
 import org.angmarch.views.NiceSpinner
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.anko.toast
 import top.zibin.luban.Luban
 import java.io.File
 
@@ -120,10 +121,6 @@ class UploadBookActivity : TakePhotoActivity(), IViewUploadBook {
         find<View>(R.id.z_btn_error_loading_book_info).visibility = View.GONE
         find<TextView>(R.id.z_txt_loading_info_add_book).visibility = View.VISIBLE
         find<TextView>(R.id.z_txt_loading_info_add_book).text = "没有查到该图书信息，请联系客服"
-    }
-
-    override fun toast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
 
     override fun fillTheBookInfo(book: SysBook) {

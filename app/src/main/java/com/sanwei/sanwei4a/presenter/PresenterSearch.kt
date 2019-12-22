@@ -36,7 +36,6 @@ class PresenterSearch : BasePresenter<IViewSearch>() {
                 msg!!
                 LogUtil.e(TAG, msg)
                 handler.post {
-                    view?.toast(msg)
                     view?.loadMoreFail()
                     view?.setIsRefreshing(false)
                 }
@@ -60,7 +59,6 @@ class PresenterSearch : BasePresenter<IViewSearch>() {
                 msg!!
                 LogUtil.e(TAG, msg)
                 handler.post {
-                    view?.toast(msg)
                     view?.loadMoreFail()
                 }
             }
@@ -86,7 +84,6 @@ class PresenterSearch : BasePresenter<IViewSearch>() {
                 msg!!
                 LogUtil.e(TAG, msg)
                 handler.post {
-                    view?.toast(msg)
                     view?.loadMoreFail()
                     view?.setIsRefreshing(false)
                 }
@@ -110,7 +107,6 @@ class PresenterSearch : BasePresenter<IViewSearch>() {
                 msg!!
                 LogUtil.e(TAG, msg)
                 handler.post {
-                    view?.toast(msg)
                     view?.loadMoreFail()
                 }
             }

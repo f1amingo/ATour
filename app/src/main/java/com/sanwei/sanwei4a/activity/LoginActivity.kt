@@ -24,10 +24,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import okhttp3.Call
 import okhttp3.Callback
 import okhttp3.Response
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.find
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.anko.*
 import per.johnson.server.core.LocalUDPDataSender
 import java.io.IOException
 
