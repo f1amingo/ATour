@@ -29,7 +29,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/white"
-            android:text="立即登录"
+            android:text="克里斯多夫"
             android:textColor="@color/colorPrimary" />
 
         <TextView
@@ -292,7 +292,8 @@
                 android:layout_marginTop="1dp"
                 android:background="@color/white">
 
-                <TextView
+                <EditText
+                    android:id="@+id/query_message"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -302,16 +303,16 @@
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
-                    android:text="邀请码" />
+                    android:text="客服测试" />
 
-                <TextView
-                    android:id="@+id/z_txt_invite_code"
+                <Button
+                    android:id="@+id/bot_test"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="24dp"
-                    android:hint="请登录" />
+                    android:hint="GO Text" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -373,7 +374,7 @@
 
                 <TextView
                     android:id="@+id/z_text_bridge_mine"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
@@ -383,7 +384,6 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
                     android:text="状元桥" />
-
             </RelativeLayout>
 
             <RelativeLayout
@@ -393,19 +393,17 @@
                 android:background="@color/white">
 
                 <TextView
-                    android:id="@+id/z_text_grass_mine"
+                    android:id="@+id/show_result"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:drawableLeft="@drawable/ic_grass"
-                    android:drawablePadding="8dp"
-                    android:focusable="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
-                    android:text="百草园" />
+                    android:text="回调测试" />
 
             </RelativeLayout>
+
+
 
         </LinearLayout>
 

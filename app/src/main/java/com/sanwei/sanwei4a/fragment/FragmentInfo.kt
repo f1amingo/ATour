@@ -20,6 +20,7 @@ import com.sanwei.sanwei4a.adapter.NotificationListAdapter
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.uiThread
 
 

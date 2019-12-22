@@ -38,6 +38,7 @@
             <TextView
                 style="@style/DocDetailsItemTitle"
                 android:id="@+id/selection_name"
+                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="丽江+大理+泸沟湖" />
