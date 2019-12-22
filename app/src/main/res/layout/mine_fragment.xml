@@ -17,7 +17,7 @@
             android:layout_height="64dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:src="@drawable/ic_cheese"
+            android:src="@drawable/user1"
             fresco:civ_border_color="@color/white_parent"
             fresco:civ_border_width="1dp" />
 
@@ -32,15 +32,16 @@
             android:text="克里斯多夫"
             android:textColor="@color/colorPrimary" />
 
-        <TextView
-            android:id="@+id/z_txt_username_mine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/z_img_head_mine"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:text="姓名"
-            android:textColor="@color/white" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/z_txt_username_mine"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/z_img_head_mine"-->
+        <!--            android:layout_centerHorizontal="true"-->
+        <!--            android:layout_marginTop="8dp"-->
+        <!--            android:text="姓名"-->
+        <!--            android:textColor="@color/colorPrimary"-->
+        <!--            android:textColor="@color/white" />-->
 
     </RelativeLayout>
 
@@ -57,91 +58,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white">
-
-                <LinearLayout
-                    android:id="@+id/z_layout_one_release_mine"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/mine_release" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="我发布的" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/z_layout_two_out_mine"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/mine_out" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="我借出的" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/z_layout_three_in_mine"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/mine_in" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="我借入的" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0" />
-                </LinearLayout>
-
                 <LinearLayout
                     android:id="@+id/z_layout_four_wanted_mine"
                     android:layout_width="0dp"
@@ -162,20 +78,118 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我想要的" />
+                        android:text="我的收藏" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/z_layout_one_release_mine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/mine_release" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0" />
+                        android:text="我的订单" />
+
+
                 </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/z_layout_two_out_mine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_comment_foreground" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="我的评价" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/z_layout_three_in_mine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/ic_history_foreground" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="浏览记录" />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/perfernce_setting"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:drawableLeft="@drawable/ic_mine_setting"
+                    android:drawablePadding="8dp"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="16dp"
+                    android:text="偏好设置" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/ic_right" />
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
                 android:background="@color/white">
 
                 <TextView
@@ -229,35 +243,6 @@
                     android:src="@drawable/ic_right" />
 
             </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:drawableLeft="@drawable/ic_wallet"
-                    android:drawablePadding="8dp"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="16dp"
-                    android:text="押金管理" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="16dp"
-                    android:src="@drawable/ic_right" />
-            </RelativeLayout>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -283,7 +268,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="24dp"
-                    android:hint="请登录" />
+                    android:hint="50币" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -298,7 +283,6 @@
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="false"
-                    android:drawableLeft="@drawable/ic_invite"
                     android:drawablePadding="8dp"
                     android:focusable="true"
                     android:gravity="center_vertical"
@@ -322,17 +306,17 @@
                 android:background="@color/white">
 
                 <TextView
-                    android:id="@+id/z_text_sanwei_mine"
+                    android:id="@+id/z_invite_friend"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
-                    android:drawableLeft="@drawable/ic_sanwei"
+                    android:drawableLeft="@drawable/ic_invite"
                     android:drawablePadding="8dp"
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
-                    android:text="三味书屋" />
+                    android:text="邀请好友" />
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -352,7 +336,7 @@
                 android:background="@color/white">
 
                 <TextView
-                    android:id="@+id/z_text_gold_mine"
+                    android:id="@+id/z_text_contact_us"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
@@ -362,9 +346,10 @@
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
-                    android:text="黄金屋" />
+                    android:text="联系我们" />
 
             </RelativeLayout>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -373,19 +358,19 @@
                 android:background="@color/white">
 
                 <TextView
-                    android:id="@+id/z_text_bridge_mine"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/z_update_software"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
-                    android:drawableLeft="@drawable/ic_bridge"
                     android:drawablePadding="8dp"
+                    android:drawableLeft="@drawable/ic_update_software"
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="16dp"
-                    android:text="状元桥" />
-            </RelativeLayout>
+                    android:text="检查更新" />
 
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
