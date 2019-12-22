@@ -1,7 +1,5 @@
 package com.sanwei.sanwei4a.activity
 
-//import com.alibaba.fastjson.JSONObject
-import com.sanwei.sanwei4a.activity.ConfirmDetailActivity
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -13,25 +11,19 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONObject
+import com.alibaba.fastjson.JSONPObject
 import com.bumptech.glide.Glide
 import com.sanwei.sanwei4a.R
-import com.sanwei.sanwei4a.adapter.ImgListAdapter
-import com.sanwei.sanwei4a.adapter.ItemImg
-import com.sanwei.sanwei4a.adapter.TourDayItem
-import com.sanwei.sanwei4a.adapter.TourDayItemAdapter
+import com.sanwei.sanwei4a.adapter.*
 import com.sanwei.sanwei4a.util.LogUtil
 import kotlinx.android.synthetic.main.activity_tour_details.*
-import kotlinx.android.synthetic.main.z_bottom_dialog_tour.*
 import okhttp3.*
 import org.apmem.tools.layouts.FlowLayout
 import org.jetbrains.anko.dip
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.support.v4.startActivity
-import org.jetbrains.anko.textColor
 import org.jetbrains.anko.toast
 import java.io.IOException
-
 
 class TourDetailsActivity : BaseActivity() {
 
@@ -47,6 +39,7 @@ class TourDetailsActivity : BaseActivity() {
 
     private lateinit var mAdapterImg: ImgListAdapter
     private lateinit var mAdapterDay: TourDayItemAdapter
+    private lateinit var mAdapterComment: CommentItemAdapter
 
     private var mBottomDlg: BottomSheetDialog? = null
     private lateinit var flowlayout: FlowLayout
@@ -63,13 +56,63 @@ class TourDetailsActivity : BaseActivity() {
 
         initRecyclerImg()
         initRecyclerDay()
+        initRecyclerComment()
         initBottomView()
 
         getDetails()
+        getComments()
 
         btn_confirm.setOnClickListener {
             this.mBottomDlg?.show()
         }
+    }
+
+    private fun initRecyclerComment() {
+        mAdapterComment = CommentItemAdapter(R.layout.z_item_comment, ArrayList())
+        z_recycler_tour_comment.adapter = mAdapterComment
+        val layoutManager = LinearLayoutManager(this)
+        z_recycler_tour_comment.layoutManager = layoutManager
+    }
+
+    private fun getComments() {
+        if (mId.isBlank()) {
+            return
+        }
+        val client = OkHttpClient()
+        val url = "http://47.97.175.189:8080/Entity/U20dc5fd38286f/ATour/Comment/?Comment.tourid=${mId}"
+        val request = Request.Builder()
+                .url(url)
+                .build()
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                LogUtil.e(TAG, "请求失败")
+                LogUtil.e(TAG, e.message!!)
+                runOnUiThread {
+                    toast("请求失败")
+                    dismissWaitingDlg()
+                }
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                val strBody = response.body()!!.string()
+                LogUtil.e(TAG, strBody)
+                val jsonArray = JSONObject.parseObject(strBody).getJSONArray("Comment")
+                runOnUiThread {
+                    jsonArray?.forEach {
+                        val item = it as JSONObject
+                        mAdapterComment.addData(CommentItem(
+                                item.getString("id"),
+                                item.getString("stars"),
+                                item.getString("content"),
+                                item.getString("avatar"),
+                                item.getString("name"),
+                                item.getString("date"),
+                                item.getString("tourid")
+                        ))
+                    }
+                }
+            }
+        })
     }
 
     private fun initBottomView() {
@@ -83,7 +126,7 @@ class TourDetailsActivity : BaseActivity() {
                     "mId" to mId,
                     "price" to price,
                     "merchantName" to merchantName,
-                    "imageUrl"  to imgList[0],
+                    "imageUrl" to imgList[0],
                     "curSelection" to curSelection
             )
         }
@@ -120,8 +163,10 @@ class TourDetailsActivity : BaseActivity() {
             override fun onFailure(call: Call, e: IOException) {
                 LogUtil.e(TAG, "请求失败")
                 LogUtil.e(TAG, e.message!!)
-                toast("请求失败")
-                dismissWaitingDlg()
+                runOnUiThread {
+                    toast("请求失败")
+                    dismissWaitingDlg()
+                }
             }
 
             override fun onResponse(call: Call, response: Response) {

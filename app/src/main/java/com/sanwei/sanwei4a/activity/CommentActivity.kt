@@ -51,8 +51,7 @@ class CommentActivity : BaseActivity() {
             mapData["avatar"] = avatar
             mapData["name"] = userName
             mapData["date"] = Date().time.toString()
-            mapData["tourId"] = tourId
-
+            mapData["tourid"] = tourId
 
             val url = "http://47.97.175.189:8080/Entity/U20dc5fd38286f/ATour/Comment/"
             val client = OkHttpClient.Builder().retryOnConnectionFailure(true).build()
@@ -66,7 +65,9 @@ class CommentActivity : BaseActivity() {
             client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {
                     LogUtil.e(TAG, e.toString())
-                    toast("提交失败")
+                    runOnUiThread {
+                        toast("提交失败")
+                    }
                 }
 
                 override fun onResponse(call: Call, response: Response) {
@@ -74,8 +75,6 @@ class CommentActivity : BaseActivity() {
                     runOnUiThread { toast("提交成功") }
                 }
             })
-
-
         }
     }
 
