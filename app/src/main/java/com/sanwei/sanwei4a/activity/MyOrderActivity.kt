@@ -1,7 +1,6 @@
 package com.sanwei.sanwei4a.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.alibaba.fastjson.JSONObject
@@ -34,8 +33,11 @@ class MyOrderActivity : BaseActivity() {
         z_recycler_my_order.layoutManager = LinearLayoutManager(this)
         mAdapter.setOnItemClickListener { _, _, position ->
             val item = mAdapter.getItem(position)!!
-            if (item.state == "pass")
+            if (item.state == "pass") {
                 startActivity<CommentActivity>("tourId" to item.product_id, "order" to JSONObject.toJSONString(item))
+            } else if (item.state == "comment") {
+                startActivity<TourDetailsActivity>("id" to item.product_id)
+            }
         }
     }
 

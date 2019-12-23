@@ -243,62 +243,6 @@
                 android:background="@color/white">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="false"
-                    android:drawableLeft="@drawable/ic_points"
-                    android:drawablePadding="8dp"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="16dp"
-                    android:text="可用积分" />
-
-                <TextView
-                    android:id="@+id/z_txt_points_balance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="24dp"
-                    android:hint="50币" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white">
-
-                <EditText
-                    android:id="@+id/query_message"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="false"
-                    android:drawablePadding="8dp"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="16dp"
-                    android:text="附近有什么好吃的" />
-
-                <Button
-                    android:id="@+id/bot_test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="24dp"
-                    android:hint="GO Text" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white">
-
-                <TextView
                     android:id="@+id/z_invite_friend"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -343,7 +287,6 @@
 
             </RelativeLayout>
 
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -364,24 +307,6 @@
                     android:text="检查更新" />
 
             </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="1dp"
-                android:background="@color/white">
-
-                <TextView
-                    android:id="@+id/show_result"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackground"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="16dp"
-                    android:text="回调测试" />
-
-            </RelativeLayout>
-
 
         </LinearLayout>
 

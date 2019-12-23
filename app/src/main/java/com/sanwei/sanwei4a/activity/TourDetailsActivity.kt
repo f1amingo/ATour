@@ -11,7 +11,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONObject
-import com.alibaba.fastjson.JSONPObject
 import com.bumptech.glide.Glide
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.adapter.*
@@ -121,7 +120,7 @@ class TourDetailsActivity : BaseActivity() {
         flowlayout = bottomView.find(R.id.flowlayout_tour)
         btnSelect = bottomView.find(R.id.btn_select_tour)
         btnSelect.setOnClickListener {
-//            toast("选择套餐${curSelection}")
+            //            toast("选择套餐${curSelection}")
             startActivity<ConfirmDetailActivity>(
                     "name" to name,
                     "mId" to mId,
@@ -173,6 +172,9 @@ class TourDetailsActivity : BaseActivity() {
             override fun onResponse(call: Call, response: Response) {
                 val strBody = response.body()!!.string()
                 LogUtil.e(TAG, strBody)
+                if (!response.isSuccessful) {
+                    return
+                }
                 val jsonObj = JSONObject.parseObject(strBody)
                 name = jsonObj.getString("name")
                 tags = jsonObj.getJSONArray("tags").toJavaList(String::class.java)

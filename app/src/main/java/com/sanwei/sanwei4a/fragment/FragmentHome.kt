@@ -72,20 +72,22 @@ class FragmentHome : BaseFragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 val strBody = response.body()!!.string()
-//                LogUtil.e(TAG, strBody)
+                LogUtil.e(TAG, strBody)
                 val jsonObj = JSONObject.parseObject(strBody)
                 val jsonArray = jsonObj.getJSONArray("Tour")
                 jsonArray.forEach {
                     val jObject = it as JSONObject
-                    val imgList = jObject.getJSONArray("img_list")
-                    onUiThread {
-                        mAdapter.addData(ItemHomeTour(
-                                jObject.getString("id"),
-                                imgList.getString(0),
-                                jObject.getString("name"),
-                                jObject.getString("merchant_name"),
-                                jObject.getString("price")
-                        ))
+                    if (jObject.getString("review_status") == "pass") {
+                        val imgList = jObject.getJSONArray("img_list")
+                        onUiThread {
+                            mAdapter.addData(ItemHomeTour(
+                                    jObject.getString("id"),
+                                    imgList.getString(0),
+                                    jObject.getString("name"),
+                                    jObject.getString("merchant_name"),
+                                    jObject.getString("price")
+                            ))
+                        }
                     }
                 }
             }

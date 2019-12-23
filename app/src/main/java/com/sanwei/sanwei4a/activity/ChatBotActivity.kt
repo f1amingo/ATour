@@ -78,10 +78,6 @@ class ChatBotActivity : BaseActivity() {
         bufferedWriter.write(str)
         bufferedWriter.flush()
         bufferedWriter.close()
-        val intent = Intent()
-        intent.putExtra("content", mAdapter.mItems[mAdapter.mItems.size - 1].content)
-        intent.putExtra("time", mAdapter.mItems[mAdapter.mItems.size - 1].time)
-        setResult(1, intent)
     }
 
     private fun initBtnSend() {
@@ -118,7 +114,9 @@ class ChatBotActivity : BaseActivity() {
                         val result = jsonObj.getJSONObject("data").getJSONObject("info").getString("text")
                         runOnUiThread {
                             mAdapter.addData(ItemChatMsg(result, Date().time, MsgDirectionEnum.In, true))
+                            recycler_chat_bot.scrollToPosition(mAdapter.itemCount - 1)
                             dismissWaitingDlg()
+                            input_chat_bot.setText("")
                         }
                     }
                 }

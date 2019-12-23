@@ -7,26 +7,34 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONObject
 import com.netease.nimlib.sdk.NIMClient
 import com.netease.nimlib.sdk.Observer
 import com.netease.nimlib.sdk.RequestCallbackWrapper
 import com.netease.nimlib.sdk.msg.MsgService
 import com.netease.nimlib.sdk.msg.MsgServiceObserve
+import com.netease.nimlib.sdk.msg.constant.MsgDirectionEnum
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum
 import com.netease.nimlib.sdk.msg.model.IMMessage
 import com.netease.nimlib.sdk.msg.model.RecentContact
 import com.sanwei.sanwei4a.R
 import com.sanwei.sanwei4a.activity.ChatActivity
 import com.sanwei.sanwei4a.activity.ChatBotActivity
+import com.sanwei.sanwei4a.adapter.ItemChatMsg
 import com.sanwei.sanwei4a.adapter.ItemNotification
 import com.sanwei.sanwei4a.adapter.NotificationListAdapter
+import com.sanwei.sanwei4a.util.LogUtil
 import kotlinx.android.synthetic.main.fragment_info.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.startActivityForResult
 import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.uiThread
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.lang.Exception
+import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -59,19 +67,29 @@ class FragmentInfo : BaseFragment() {
         initRecentContactUpdateListener()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1 && resultCode == 1) {
-            val content = data!!.getStringExtra("content")
-            val time = data.getLongExtra("time", Date().time)
-            txt_chat_bot_notification.text = content
-            txt_chat_bot_notification_time.text = SimpleDateFormat("YYYY-MM-dd hh:mm:ss", Locale.CHINA).format(time)
+    private fun getChatBotLatest() {
+        try {
+            val inputStream = context.openFileInput("chat_bot")
+            val bufferedReader = BufferedReader(InputStreamReader(inputStream))
+            var line = bufferedReader.readLine()
+            val stringBuilder = StringBuilder()
+            while (line != null) {
+                stringBuilder.append(line)
+                line = bufferedReader.readLine()
+            }
+            val jsonArray = JSONArray.parseArray(stringBuilder.toString())
+            val lastJson = jsonArray.getJSONObject(jsonArray.size - 1)
+            txt_chat_bot_notification_time.text = SimpleDateFormat("YYYY-MM-dd hh:mm:ss", Locale.CHINA).format(lastJson.getLong("time"))
+            txt_chat_bot_notification.text = lastJson.getString("content")
+        } catch (e: Exception) {
+            LogUtil.e(TAG, e.message.toString())
         }
     }
 
     override fun onResume() {
         super.onResume()
         initOnReceiveMessage(true)
+        getChatBotLatest()
     }
 
     override fun onPause() {
