@@ -132,7 +132,7 @@ class App : Application() {
     }
 
     private fun loginInfo(): LoginInfo? {
-        return LoginInfo("test2", "a6156a446a50c1f5d014ca3d910092e8")
+        return LoginInfo("user", "09292f0bfad446cb61395219d283cb05")
     }
 
     companion object {

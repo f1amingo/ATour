@@ -65,6 +65,9 @@ class TourDetailsActivity : BaseActivity() {
         btn_confirm.setOnClickListener {
             this.mBottomDlg?.show()
         }
+        btn_chat.setOnClickListener {
+            startActivity<ChatActivity>()
+        }
     }
 
     private fun initRecyclerComment() {

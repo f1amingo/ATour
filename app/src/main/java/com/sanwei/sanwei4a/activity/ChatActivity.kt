@@ -34,7 +34,7 @@ class ChatActivity : BaseActivity() {
     private lateinit var mBtnSend: View
     private lateinit var mAdapter: ChatListAdapter
     private var mInput: String = ""
-    private var accId: String = ""
+    private var accId: String = "merchant"
     private val onMsgReceiveListener = Observer<List<IMMessage>> {
         it.reversed().forEach {
             val newItem = ItemChatMsg(it.content, System.currentTimeMillis(), MsgDirectionEnum.In)
@@ -48,7 +48,6 @@ class ChatActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
-
 
         mToolbar = find(R.id.z_toolbar_chat)
         mRecyclerView = find(R.id.z_recycler_chat)
@@ -93,7 +92,7 @@ class ChatActivity : BaseActivity() {
     }
 
     private fun fetchChatRecord() {
-        val anchor = MessageBuilder.createEmptyMessage("test1", SessionTypeEnum.P2P, 0)
+        val anchor = MessageBuilder.createEmptyMessage(accId, SessionTypeEnum.P2P, 0)
         NIMClient.getService(MsgService::class.java)
                 .pullMessageHistory(anchor, 50, true)
                 .setCallback(object : RequestCallbackWrapper<List<IMMessage>>() {
@@ -105,20 +104,6 @@ class ChatActivity : BaseActivity() {
                         }
                     }
                 })
-//        本地查询（数据不同步）
-//        NIMClient.getService(MsgService::class.java)
-//                .queryMessageListEx(anchor, QueryDirectionEnum.QUERY_NEW,
-//                        20, true).setCallback(object : RequestCallbackWrapper<List<IMMessage>>() {
-//                    override fun onResult(code: Int, result: List<IMMessage>?, exception: Throwable?) {
-//                        Log.e(TAG, "获取聊天记录成功")
-//                        if (result != null) {
-//                            result.forEach {
-//                                mAdapter.addData(ItemChatMsg(it.content, it.time, it.direct))
-//                                mRecyclerView.smoothScrollToPosition(mAdapter.itemCount - 1)
-//                            }
-//                        }
-//                    }
-//                })
     }
 
     private fun initBtnSend() {

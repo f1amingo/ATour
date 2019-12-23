@@ -175,9 +175,18 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/btn_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_green_google"
+            android:text="咨询商家"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <Button
             android:id="@+id/btn_confirm"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
             android:text="确定行程"
             android:textStyle="bold" />
